@@ -9,10 +9,12 @@ import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
+import androidx.compose.material.Colors
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.CameraAlt
 import androidx.compose.material.icons.filled.MoreVert
 import androidx.compose.material.icons.filled.Search
+import androidx.compose.material3.ColorScheme
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.Text
@@ -27,6 +29,7 @@ import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 
+
 @Composable
 fun Header(
     statusClick: () -> Unit,
@@ -36,12 +39,14 @@ fun Header(
     Row(
         modifier = Modifier
             .fillMaxWidth()
-            .background(color = Color.Cyan)
-            .padding(14.dp),
+            .background(color = Color(0xFF03bb85))
+            .padding(4.dp),
         horizontalArrangement = Arrangement.SpaceBetween,
         verticalAlignment = Alignment.CenterVertically
     ) {
-        Text("WhatsApp", fontWeight = FontWeight.Medium , fontSize = 24.sp)
+        Box(modifier = Modifier.padding(start = 8.dp)) {
+            Text("WhatsApp", fontWeight = FontWeight.Medium , fontSize = 22.sp)
+        }
 
         Box() {
             Row(horizontalArrangement = Arrangement.SpaceAround) {
