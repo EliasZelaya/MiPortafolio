@@ -5,6 +5,11 @@ import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.rememberScrollState
+import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.SnackbarDefaults.backgroundColor
 import androidx.compose.material3.AlertDialogDefaults.titleContentColor
 import androidx.compose.material3.BottomAppBarDefaults.containerColor
@@ -22,17 +27,43 @@ import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.unit.dp
 import com.eezados.whatsappclone.R
 
 @OptIn(ExperimentalMaterial3Api::class)
 @SuppressLint("UnusedMaterial3ScaffoldPaddingParameter")
 @Composable
 fun Screens() {
-    Column {
+    Scaffold (
+        topBar = {
+            Header({}, {}) {
+            }
+        },
+        content = {
+                  Chats(Modifier
+                      .verticalScroll(rememberScrollState())
+                      .padding(bottom = 8.dp)
+                  )
+        },
+        bottomBar = {
+            NavigationMenu(
+                Modifier
+                    .fillMaxWidth()
+                    .padding(16.dp)
+            )
+        }
+    )
+    /*Column(
+        modifier = Modifier.fillMaxSize()
+
+    ) {
         Header({}, {}, {})
-        Chats()
-        NavigationMenu()
-    }
+        Chats(Modifier
+            .verticalScroll(rememberScrollState())
+            .padding(bottom = 8.dp)
+            .weight(1f))
+        NavigationMenu(Modifier.fillMaxWidth().padding(16.dp))
+    }*/
 }
 
 @Preview(showSystemUi = true)

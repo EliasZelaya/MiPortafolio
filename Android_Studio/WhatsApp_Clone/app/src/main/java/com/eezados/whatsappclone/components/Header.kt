@@ -1,3 +1,5 @@
+@file:Suppress("UNUSED_EXPRESSION")
+
 package com.eezados.whatsappclone.components
 
 import android.service.autofill.OnClickAction
@@ -66,7 +68,7 @@ fun UserOptions(
     pad: Dp
 ) {
     Row {
-        IconButton(onClick = { /*TODO*/ }) {
+        IconButton(onClick = { click }) {
             Icon(imageVector = icon, contentDescription = description)
             Spacer(modifier = Modifier.padding(pad))
         }

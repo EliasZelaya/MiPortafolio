@@ -30,24 +30,24 @@ import androidx.compose.ui.unit.sp
 import coil.compose.AsyncImage
 
 @Composable
-fun Chats() {
+fun Chats(modifier: Modifier) {
     Column(
-        Modifier
-            .verticalScroll(rememberScrollState())
-            .padding(bottom = 8.dp)) {
+        modifier = modifier) {
         for (n in 1 .. 20) {
             Spacer(modifier = Modifier.padding(4.dp))
-            UserChats()
+            UserChats(Modifier
+                .fillMaxWidth()
+                .padding(start = 12.dp, top = 14.dp, end = 16.dp))
         }
     }
 }
 
 @Composable
-private fun UserChats() {
+private fun UserChats(
+    modifier: Modifier
+) {
     Row(
-        modifier = Modifier
-            .fillMaxWidth()
-            .padding(start = 12.dp, top = 14.dp, end = 16.dp)
+        modifier = modifier
     ) {
         Row {
             AsyncImage(
@@ -91,5 +91,7 @@ private fun UserChats() {
 @Preview(showSystemUi = true)
 @Composable
 fun PreviewChats() {
-    Chats()
+    Chats(Modifier
+        .verticalScroll(rememberScrollState())
+        .padding(bottom = 8.dp))
 }
