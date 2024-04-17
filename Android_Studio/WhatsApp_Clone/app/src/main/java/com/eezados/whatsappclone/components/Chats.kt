@@ -31,8 +31,12 @@ import coil.compose.AsyncImage
 
 @Composable
 fun Chats() {
-    Column(Modifier.verticalScroll(rememberScrollState()).padding(bottom = 8.dp)) {
-        for (n in 1 ..20) {
+    Column(
+        Modifier
+            .verticalScroll(rememberScrollState())
+            .padding(bottom = 8.dp)) {
+        for (n in 1 .. 20) {
+            Spacer(modifier = Modifier.padding(4.dp))
             UserChats()
         }
     }
