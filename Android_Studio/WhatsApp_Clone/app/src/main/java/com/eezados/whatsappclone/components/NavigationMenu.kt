@@ -12,6 +12,7 @@ import androidx.compose.material.icons.filled.HistoryToggleOff
 import androidx.compose.material.icons.filled.Message
 import androidx.compose.material.icons.filled.People
 import androidx.compose.material3.Icon
+import androidx.compose.material3.NavigationBar
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
@@ -24,14 +25,16 @@ import androidx.compose.ui.unit.dp
 fun NavigationMenu(
     modifier: Modifier
 ) {
-    Row(
-        modifier = modifier,
-        horizontalArrangement = Arrangement.SpaceBetween,
-    ) {
-        SetIcons(Icons.Default.Message, "Chats", "Messages")
-        SetIcons(Icons.Default.HistoryToggleOff, "Status", "Status")
-        SetIcons(Icons.Default.People, "Community", "Community")
-        SetIcons(Icons.Default.Call, "Calls", "Calls")
+    NavigationBar {
+        Row(
+            modifier = modifier,
+            horizontalArrangement = Arrangement.SpaceBetween,
+        ) {
+            SetIcons(Icons.Default.Message, "Chats", "Messages")
+            SetIcons(Icons.Default.HistoryToggleOff, "Status", "Status")
+            SetIcons(Icons.Default.People, "Community", "Community")
+            SetIcons(Icons.Default.Call, "Calls", "Calls")
+        }
     }
 }
 
