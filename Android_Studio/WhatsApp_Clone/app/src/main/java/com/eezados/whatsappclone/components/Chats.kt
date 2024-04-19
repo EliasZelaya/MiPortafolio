@@ -31,15 +31,14 @@ import coil.compose.AsyncImage
 
 @Composable
 fun Chats(
-    modifier: Modifier ,
-    navController: NavHostController,
+    modifier: Modifier,
     innerPadding: PaddingValues,
 ) {
     LazyColumn(
         modifier = modifier
             .padding(innerPadding)
     ) {
-        for (n in 1..20) {
+        for (n in 1..10) {
             item {
                 Spacer(modifier = Modifier.padding(4.dp))
                 UserChats(

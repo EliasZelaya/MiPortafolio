@@ -1,6 +1,5 @@
-package com.eezados.whatsappclone.components
+package com.eezados.whatsappclone.components.Navigations
 
-import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 
 @Composable
