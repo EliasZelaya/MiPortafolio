@@ -38,7 +38,7 @@ fun Chats(
         modifier = modifier
             .padding(innerPadding)
     ) {
-        for (n in 1..10) {
+        for (n in 1..3) {
             item {
                 Spacer(modifier = Modifier.padding(4.dp))
                 UserChats(

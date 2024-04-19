@@ -50,6 +50,11 @@ android {
 }
 
 dependencies {
+    implementation(libs.material3)
+    implementation(libs.androidx.material)
+    implementation(libs.androidx.material.icons.core)
+    implementation(libs.material.icons.core.android)
+    implementation(libs.material.icons.extended)
     val navVersion = "2.7.7"
 
     implementation("io.coil-kt:coil-compose:2.6.0")
@@ -62,16 +67,12 @@ dependencies {
     implementation(libs.androidx.ui.tooling.preview)
     implementation(libs.androidx.material3)
     implementation(libs.androidx.constraintlayout.compose)
-    implementation(libs.androidx.material.android)
-    implementation(libs.androidx.material.icons.extended)
-    implementation(libs.androidx.material.icons.core.android)
     implementation(libs.androidx.navigation.runtime.ktx)
     implementation(libs.androidx.navigation.compose)
     implementation("androidx.navigation:navigation-compose:$navVersion")
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
-    androidTestImplementation(platform(libs.androidx.compose.bom))
     androidTestImplementation(libs.androidx.ui.test.junit4)
     debugImplementation(libs.androidx.ui.tooling)
     debugImplementation(libs.androidx.ui.test.manifest)

@@ -26,27 +26,33 @@ import com.eezados.whatsappclone.components.Navigations.NavigationMenu
 fun Screens() {
     /*val scaffoldState: ScaffoldState =
         rememberScaffoldState(rememberDrawerState(initialValue = DrawerValue.Closed))*/
-    val navController = rememberNavController()
-    val navBackStackEntry by navController.currentBackStackEntryAsState()
-    val currentRoute: String? = navBackStackEntry?.destination?.route
-    val items = NavItemsList()
+    val navController =
+        rememberNavController() //Esto lo que hace es que le recuerda donde es en que pantalla esta el usuario
+    val navBackStackEntry by navController.currentBackStackEntryAsState()//Servira para que cuando se le de al boton de atras, regrese a una pantalla de las que a navegado el usuario
+    val currentRoute: String? =
+        navBackStackEntry?.destination?.route //Esto lo que hace es que almacena el historial de donde es que ha estado navegando el usuario
+    val items =
+        NavItemsList()//Esta es una lista de items que almacena la informacion para general los iconos de los botones de navegacion
 
     Scaffold(
-        topBar = { TopAppBarContent() },
-        bottomBar = {
+        topBar = { TopAppBarContent() },//Es la barra de navegacion de arriba
+        bottomBar = {// Es la barra de navegacion de la parte de abajo
             NavigationMenu(
                 Modifier
                     .fillMaxWidth()
                     .padding(16.dp),
-                items = items,
-                currentRoute = currentRoute
-            ) { navItems ->
-                navController.navigate(navItems.route) {
+                items = items,//Se le envia una variable de tipo NavItemList que contiene lo componentes para generar los botones
+                currentRoute = currentRoute//Es el que almacena el historial para la navegacion del usuario
+            ) { navItems ->//Esto es lo que le da la funcionalidad al boton de navegacion para cada
+                // vez que se le precione a un boton distino navegue por las demas pantallas
+                navController.navigate(navItems.route) {//Permite la navegacion
                     navController.graph.startDestinationRoute?.let { startDestinationRoute ->
                         popUpTo(startDestinationRoute) {
                             saveState = true
                         }
                     }
+                    launchSingleTop = true
+                    restoreState = true
                 }
             }
         },

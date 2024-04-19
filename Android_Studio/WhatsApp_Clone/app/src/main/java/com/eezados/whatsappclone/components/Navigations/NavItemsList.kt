@@ -18,26 +18,26 @@ fun NavItemsList(): List<NavItems> {
         NavItems(
             "Chats",
                 ScreenRoute.Chats.route,
-            Icons.Outlined.Message,
-            Icons.Filled.Message
+            Icons.Filled.Message,
+            Icons.Outlined.Message
         ),
         NavItems(
             "Status",
             ScreenRoute.Status.route,
-            Icons.Outlined.HistoryToggleOff,
-            Icons.Filled.HistoryToggleOff
+            Icons.Filled.HistoryToggleOff,
+            Icons.Outlined.HistoryToggleOff
         ),
         NavItems(
             "Community",
             ScreenRoute.Community.route,
-            Icons.Outlined.People,
-            Icons.Filled.People
+            Icons.Filled.People,
+            Icons.Outlined.People
         ),
         NavItems(
             "Calls",
             ScreenRoute.Calls.route,
-            Icons.Outlined.Call,
-            Icons.Filled.Call
+            Icons.Filled.Call,
+            Icons.Outlined.Call
         )
     )
 }
