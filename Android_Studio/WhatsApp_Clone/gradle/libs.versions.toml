@@ -1,5 +1,5 @@
 [versions]
-agp = "8.3.0"
+agp = "8.2.2"
 kotlin = "1.9.0"
 coreKtx = "1.12.0"
 junit = "4.13.2"
@@ -22,6 +22,7 @@ materialIconsCoreDesktop = "1.6.6"
 materialIconsExtendedVersion = "1.6.6"
 materialIconsExtendedAndroid = "1.6.6"
 materialIconsExtendedDesktop = "1.6.6"
+uiTestJunit4 = "1.6.6"
 
 [libraries]
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
@@ -52,6 +53,7 @@ androidx-material-icons-core-desktop = { group = "androidx.compose.material", na
 material-icons-extended = { group = "androidx.compose.material", name = "material-icons-extended", version.ref = "materialIconsExtendedVersion" }
 androidx-material-icons-extended-android = { group = "androidx.compose.material", name = "material-icons-extended-android", version.ref = "materialIconsExtendedAndroid" }
 androidx-material-icons-extended-desktop = { group = "androidx.compose.material", name = "material-icons-extended-desktop", version.ref = "materialIconsExtendedDesktop" }
+ui-test-junit4 = { group = "androidx.compose.ui", name = "ui-test-junit4", version.ref = "uiTestJunit4" }
 
 [plugins]
 androidApplication = { id = "com.android.application", version.ref = "agp" }

@@ -55,6 +55,8 @@ dependencies {
     implementation(libs.androidx.material.icons.core)
     implementation(libs.material.icons.core.android)
     implementation(libs.material.icons.extended)
+    implementation(libs.ui.test.junit4)
+    implementation(libs.androidx.espresso.core)
     val navVersion = "2.7.7"
 
     implementation("io.coil-kt:coil-compose:2.6.0")
@@ -73,7 +75,6 @@ dependencies {
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
-    androidTestImplementation(libs.androidx.ui.test.junit4)
     debugImplementation(libs.androidx.ui.tooling)
     debugImplementation(libs.androidx.ui.test.manifest)
 }

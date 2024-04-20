@@ -1,67 +1,38 @@
-package com.eezados.whatsappclone.components
+package com.eezados.whatsappclone.components.StatusComponents
 
 import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
-import androidx.compose.foundation.lazy.LazyColumn
-import androidx.compose.foundation.lazy.itemsIndexed
-import androidx.compose.foundation.rememberScrollState
+import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.shape.CircleShape
-import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Check
+import androidx.compose.material3.Button
+import androidx.compose.material3.ElevatedCard
 import androidx.compose.material3.Icon
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
+import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import androidx.navigation.NavHostController
 import coil.compose.AsyncImage
 
 @Composable
-fun Chats(
-    modifier: Modifier,
-    innerPadding: PaddingValues,
-) {
-    LazyColumn(
-        modifier = modifier
-            .padding(innerPadding)
-    ) {
-        for (n in 1..10) {
-            item {
-                Spacer(modifier = Modifier.padding(4.dp))
-                UserChats(
-                    Modifier
-                        .fillMaxWidth()
-                        .padding(start = 12.dp, top = 14.dp, end = 16.dp)
-                )
-            }
-        }
-    }
-}
-
-/*
-Spacer(modifier = Modifier.padding(4.dp))
-            UserChats(
-                Modifier
-                    .fillMaxWidth()
-                    .padding(start = 12.dp, top = 14.dp, end = 16.dp)
-            )
- */
-
-@Composable
-private fun UserChats(
+fun CreateChannels(
     modifier: Modifier
 ) {
     Row(
@@ -70,7 +41,7 @@ private fun UserChats(
         Row {
             AsyncImage(
                 model = "https://via.placeholder.com/160",
-                contentDescription = "User Image",
+                contentDescription = "Channel Image",
                 modifier = Modifier.clip(shape = CircleShape)
             )
             Column(modifier = Modifier.padding(start = 12.dp, top = 4.dp)) {
@@ -81,7 +52,7 @@ private fun UserChats(
                     verticalAlignment = Alignment.Bottom,
                     horizontalArrangement = Arrangement.SpaceBetween
                 ) {
-                    Text("Useless Text", fontSize = 16.sp, fontWeight = FontWeight.SemiBold)
+                    Text("Useless Channel", fontSize = 16.sp, fontWeight = FontWeight.SemiBold)
                     Text("16:40", fontSize = 12.sp)
                 }
                 Row(
@@ -106,11 +77,43 @@ private fun UserChats(
     }
 }
 
+@Composable
+fun Recommendations() {
+    ElevatedCard(
+        modifier = Modifier
+            .width(175.dp)
+            .height(200.dp)
+            .padding(8.dp),
+        onClick = {}
+    ) {
+        Column(
+            modifier = Modifier
+                .fillMaxSize()
+                .padding(6.dp),
+            horizontalAlignment = Alignment.CenterHorizontally,
+            verticalArrangement = Arrangement.Center
+        ) {
+            Box(modifier = Modifier.padding(bottom = 6.dp)) {
+                AsyncImage(
+                    model = "https://via.placeholder.com/190",
+                    contentDescription = "Channel Icon",
+                    modifier = Modifier.clip(CircleShape)
+                )
+            }
+
+            Box(modifier = Modifier.padding(6.dp)){
+                Text("Useless Channel", fontSize = 14.sp, fontWeight = FontWeight.W900)
+            }
+
+            Button(onClick = { /*TODO*/ }) {
+                Text("Follow")
+            }
+        }
+    }
+}
+
 @Preview(showSystemUi = true)
 @Composable
-fun PreviewChats() {
-    /*Chats(
-        Modifier
-            .verticalScroll(rememberScrollState())
-            .padding(bottom = 8.dp))*/
+fun View() {
+    Recommendations()
 }

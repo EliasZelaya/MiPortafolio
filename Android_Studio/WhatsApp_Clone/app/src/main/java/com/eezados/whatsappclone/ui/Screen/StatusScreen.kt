@@ -1,5 +1,9 @@
 package com.eezados.whatsappclone.ui.Screen
 
+import android.R
+import android.graphics.Paint.Align
+import android.provider.CalendarContract.Colors
+import androidx.compose.foundation.background
 import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
@@ -27,8 +31,10 @@ import androidx.compose.material.icons.filled.ChevronRight
 import androidx.compose.material.icons.filled.ControlPoint
 import androidx.compose.material.icons.filled.MoreVert
 import androidx.compose.material.icons.outlined.ControlPoint
+import androidx.compose.material3.Card
 import androidx.compose.material3.Divider
 import androidx.compose.material3.ElevatedCard
+import androidx.compose.material3.HorizontalDivider
 import androidx.compose.material3.Icon
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
@@ -45,6 +51,9 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import coil.compose.AsyncImage
+import com.eezados.whatsappclone.components.StatusComponents.CreateChannels
+import com.eezados.whatsappclone.components.StatusComponents.Recommendations
+import com.eezados.whatsappclone.components.StatusComponents.UserStatus
 
 @Composable
 fun StatusScreen(innerPadding: PaddingValues) {
@@ -54,6 +63,7 @@ fun StatusScreen(innerPadding: PaddingValues) {
             .padding(top = 20.dp, end = 18.dp, bottom = 16.dp, start = 16.dp)
             .verticalScroll(rememberScrollState())
     ) {
+
         Row(
             modifier = Modifier.fillMaxWidth(),
             horizontalArrangement = Arrangement.SpaceBetween
@@ -75,7 +85,7 @@ fun StatusScreen(innerPadding: PaddingValues) {
             }
         }
 
-        Divider(
+        HorizontalDivider(
             modifier = Modifier
                 .fillMaxWidth()
                 .padding(top = 12.dp), thickness = 1.dp
@@ -101,14 +111,16 @@ fun StatusScreen(innerPadding: PaddingValues) {
 
         Column {
             for (n in 1..5) {
+
                 Spacer(modifier = Modifier.padding(4.dp))
-                CreateChannel(
+                CreateChannels(
                     Modifier
                         .fillMaxWidth()
                         .padding(start = 12.dp, top = 14.dp, end = 16.dp)
                 )
             }
         }
+
 
         Spacer(modifier = Modifier.padding(16.dp))
 
@@ -127,100 +139,21 @@ fun StatusScreen(innerPadding: PaddingValues) {
             }
         }
 
-        Column(modifier = Modifier.padding(top = 6.dp)) {
-            Row(modifier = Modifier.fillMaxWidth()) {
+        Spacer(modifier = Modifier.height(16.dp))
+
+        LazyRow {
+            item {
+                for (n in 1 .. 10)
                 Recommendations()
             }
-
         }
+        Box(modifier = Modifier.padding(100.dp))
+        Text(text = "")
+
     }
+
 }
 
-@Composable
-private fun CreateChannel(
-    modifier: Modifier
-) {
-    Row(
-        modifier = modifier
-    ) {
-        Row {
-            AsyncImage(
-                model = "https://via.placeholder.com/160",
-                contentDescription = "User Image",
-                modifier = Modifier.clip(shape = CircleShape)
-            )
-            Column(modifier = Modifier.padding(start = 12.dp, top = 4.dp)) {
-                Row(
-                    modifier = Modifier
-                        .fillMaxWidth()
-                        .padding(end = 6.dp),
-                    verticalAlignment = Alignment.Bottom,
-                    horizontalArrangement = Arrangement.SpaceBetween
-                ) {
-                    Text("Useless Channel", fontSize = 16.sp, fontWeight = FontWeight.SemiBold)
-                    Text("16:40", fontSize = 12.sp)
-                }
-                Row(
-                    modifier = Modifier.padding(start = 2.dp, top = 4.dp),
-                    verticalAlignment = Alignment.CenterVertically
-                ) {
-                    Icon(
-                        imageVector = Icons.Default.Check,
-                        contentDescription = "View",
-                        modifier = Modifier.size(16.dp)
-                    )
-                    Spacer(modifier = Modifier.padding(start = 6.dp))
-                    Text(
-                        "More useless useless useless  useless and useless text",
-                        fontSize = 16.sp,
-                        maxLines = 1,
-                        overflow = TextOverflow.Ellipsis
-                    )
-                }
-            }
-        }
-    }
-}
-
-@Composable
-private fun Recommendations() {
-    ElevatedCard(
-        modifier = Modifier
-            .width(200.dp)
-            .height(200.dp)
-    ) {
-        Column {
-            AsyncImage(
-                model = "https://via.placeholder.com/150",
-                contentDescription = "Channel Icon",
-            )
-
-            Text(
-                "Useless Channel",
-                style = TextStyle(
-                    textAlign = TextAlign.Center
-                )
-            )
-        }
-    }
-}
-
-@Composable
-private fun UserStatus(i: Int) {
-    Column(horizontalAlignment = Alignment.CenterHorizontally) {
-        AsyncImage(
-            model = "https://via.placeholder.com/210",
-            contentDescription = "Status",
-            modifier = Modifier
-                .padding(8.dp)
-                .clip(
-                    CircleShape
-                )
-        )
-
-        Text("User $i", fontSize = 12.sp)
-    }
-}
 
 @Preview(showSystemUi = true)
 @Composable
