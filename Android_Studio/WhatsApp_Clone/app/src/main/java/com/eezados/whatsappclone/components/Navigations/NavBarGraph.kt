@@ -24,7 +24,7 @@ fun NavBarGraph(
             StatusScreen(innerPadding)
         }
         composable(ScreenRoute.Community.route) {
-            CommunityScreen()
+            CommunityScreen(innerPadding)
         }
         composable(ScreenRoute.Calls.route) {
             CallsScreen()

@@ -143,8 +143,8 @@ fun StatusScreen(innerPadding: PaddingValues) {
 
         LazyRow {
             item {
-                for (n in 1 .. 10)
-                Recommendations()
+                for (n in 1..10)
+                    Recommendations()
             }
         }
         Box(modifier = Modifier.padding(100.dp))
