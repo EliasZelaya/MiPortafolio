@@ -30,6 +30,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import coil.compose.AsyncImage
+import com.eezados.whatsappclone.R
 
 @Composable
 fun CreateChannels(
@@ -93,9 +94,9 @@ fun Recommendations() {
             horizontalAlignment = Alignment.CenterHorizontally,
             verticalArrangement = Arrangement.Center
         ) {
-            Box(modifier = Modifier.padding(bottom = 6.dp)) {
+            Box {
                 AsyncImage(
-                    model = "https://via.placeholder.com/190",
+                    model = R.drawable.recommendations,
                     contentDescription = "Channel Icon",
                     modifier = Modifier.clip(CircleShape)
                 )

@@ -5,6 +5,7 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
@@ -28,6 +29,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavHostController
 import coil.compose.AsyncImage
+import com.eezados.whatsappclone.components.ChatsComponents.CreateChat
 
 @Composable
 fun Chats(
@@ -37,70 +39,15 @@ fun Chats(
     LazyColumn(
         modifier = modifier
             .padding(innerPadding)
+            .padding(top = 8.dp)
     ) {
         for (n in 1..10) {
             item {
-                Spacer(modifier = Modifier.padding(4.dp))
-                UserChats(
+                CreateChat(
                     Modifier
-                        .fillMaxWidth()
-                        .padding(start = 12.dp, top = 14.dp, end = 16.dp)
+                        .fillMaxSize()
+                        .padding(start = 12.dp, end = 8.dp)
                 )
-            }
-        }
-    }
-}
-
-/*
-Spacer(modifier = Modifier.padding(4.dp))
-            UserChats(
-                Modifier
-                    .fillMaxWidth()
-                    .padding(start = 12.dp, top = 14.dp, end = 16.dp)
-            )
- */
-
-@Composable
-private fun UserChats(
-    modifier: Modifier
-) {
-    Row(
-        modifier = modifier
-    ) {
-        Row {
-            AsyncImage(
-                model = "https://via.placeholder.com/160",
-                contentDescription = "User Image",
-                modifier = Modifier.clip(shape = CircleShape)
-            )
-            Column(modifier = Modifier.padding(start = 12.dp, top = 4.dp)) {
-                Row(
-                    modifier = Modifier
-                        .fillMaxWidth()
-                        .padding(end = 6.dp),
-                    verticalAlignment = Alignment.Bottom,
-                    horizontalArrangement = Arrangement.SpaceBetween
-                ) {
-                    Text("Useless Text", fontSize = 16.sp, fontWeight = FontWeight.SemiBold)
-                    Text("16:40", fontSize = 12.sp)
-                }
-                Row(
-                    modifier = Modifier.padding(start = 2.dp, top = 4.dp),
-                    verticalAlignment = Alignment.CenterVertically
-                ) {
-                    Icon(
-                        imageVector = Icons.Default.Check,
-                        contentDescription = "View",
-                        modifier = Modifier.size(16.dp)
-                    )
-                    Spacer(modifier = Modifier.padding(start = 6.dp))
-                    Text(
-                        "More useless useless useless  useless and useless text",
-                        fontSize = 16.sp,
-                        maxLines = 1,
-                        overflow = TextOverflow.Ellipsis
-                    )
-                }
             }
         }
     }
@@ -109,8 +56,6 @@ private fun UserChats(
 @Preview(showSystemUi = true)
 @Composable
 fun PreviewChats() {
-    /*Chats(
-        Modifier
-            .verticalScroll(rememberScrollState())
-            .padding(bottom = 8.dp))*/
+    Chats(
+        Modifier, PaddingValues())
 }
