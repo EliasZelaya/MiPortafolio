@@ -148,12 +148,9 @@ fun StatusScreen(innerPadding: PaddingValues) {
             }
         }
         Box(modifier = Modifier.padding(100.dp))
-        Text(text = "")
-
+        Text("")
     }
-
 }
-
 
 @Preview(showSystemUi = true)
 @Composable
