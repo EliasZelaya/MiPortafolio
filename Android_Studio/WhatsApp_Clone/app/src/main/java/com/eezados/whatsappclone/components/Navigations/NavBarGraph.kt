@@ -9,6 +9,7 @@ import com.eezados.whatsappclone.components.ScreenRoute
 import com.eezados.whatsappclone.ui.Screen.CallsScreen
 import com.eezados.whatsappclone.ui.Screen.ChatsScreen
 import com.eezados.whatsappclone.ui.Screen.CommunityScreen
+import com.eezados.whatsappclone.ui.Screen.ContactScreen
 import com.eezados.whatsappclone.ui.Screen.StatusScreen
 
 @Composable
@@ -27,7 +28,10 @@ fun NavBarGraph(
             CommunityScreen(innerPadding)
         }
         composable(ScreenRoute.Calls.route) {
-            CallsScreen()
+            CallsScreen(innerPadding)
+        }
+        composable(ScreenRoute.Contacts.route) {
+            ContactScreen(innerPadding)
         }
     }
 }

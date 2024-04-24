@@ -6,4 +6,5 @@ sealed class ScreenRoute(var route: String) {
     object Status : ScreenRoute("status")
     object Community : ScreenRoute("community")
     object Calls : ScreenRoute("calls")
+    object Contacts : ScreenRoute("contacts")
 }

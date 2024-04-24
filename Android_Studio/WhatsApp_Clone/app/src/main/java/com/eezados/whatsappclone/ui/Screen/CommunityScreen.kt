@@ -34,6 +34,7 @@ import coil.size.Size
 import com.eezados.whatsappclone.R
 import com.eezados.whatsappclone.components.ChatsComponents.CreateChat
 import com.eezados.whatsappclone.components.CommunityComponents.CreateCommunity
+import com.eezados.whatsappclone.components.CommunityComponents.MakeCommunity
 
 @Composable
 fun CommunityScreen(innerPadding: PaddingValues) {
@@ -42,14 +43,9 @@ fun CommunityScreen(innerPadding: PaddingValues) {
 
             CreateCommunity()
 
-            Spacer(modifier = Modifier.padding(bottom = 10.dp))
-
-            for (n in 1..3) {
-                CreateChat(
-                    Modifier
-                        .fillMaxWidth()
-                        .padding(start = 12.dp, top = 14.dp, end = 16.dp)
-                )
+            for (n in 1 .. 5) {
+                Spacer(modifier = Modifier.padding(bottom = 10.dp))
+                MakeCommunity()
             }
         }
     }

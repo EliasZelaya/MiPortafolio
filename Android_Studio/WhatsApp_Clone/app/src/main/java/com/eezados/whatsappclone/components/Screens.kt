@@ -58,7 +58,15 @@ fun Screens() {
         },
         floatingActionButton = {
             FloatingActionButton(
-                onClick = { /*TODO*/ },
+                onClick = { navController.navigate(ScreenRoute.Contacts.route) {
+                    navController.graph.startDestinationRoute?.let {
+                        startDestinationRoute ->
+                        popUpTo(startDestinationRoute) {
+                            saveState = true
+                        }
+                    }
+                }
+                },
             ) {
                 Icon(
                     imageVector = Icons.Filled.AddComment,
