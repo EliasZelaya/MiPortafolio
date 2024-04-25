@@ -19,7 +19,7 @@ fun NavigationMenu(
     currentRoute: String?,
     onClick: (NavItems) -> Unit
 ) {
-    NavigationBar() {
+    NavigationBar {
         items.forEachIndexed { index, navItems ->
             NavigationBarItem(
                 selected = currentRoute == navItems.route,

@@ -43,10 +43,10 @@ fun CommunityScreen(innerPadding: PaddingValues) {
 
             CreateCommunity()
 
-            for (n in 1 .. 5) {
+//            for (n in 1 .. 5) {
                 Spacer(modifier = Modifier.padding(bottom = 10.dp))
                 MakeCommunity()
-            }
+//            }
         }
     }
 }

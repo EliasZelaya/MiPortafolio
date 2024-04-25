@@ -1,4 +1,4 @@
-package com.eezados.whatsappclone.components
+package com.eezados.whatsappclone.components.Home
 
 import android.annotation.SuppressLint
 import androidx.compose.animation.AnimatedVisibility
@@ -17,6 +17,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
+import com.eezados.whatsappclone.components.Header.Header
 import com.eezados.whatsappclone.components.Navigations.NavBarGraph
 import com.eezados.whatsappclone.components.Navigations.NavItemsList
 import com.eezados.whatsappclone.components.Navigations.NavigationMenu
@@ -25,9 +26,6 @@ import com.eezados.whatsappclone.components.Navigations.NavigationMenu
 @SuppressLint("UnusedMaterial3ScaffoldPaddingParameter")
 @Composable
 fun Screens() {
-    var visibility = true
-    /*val scaffoldState: ScaffoldState =
-        rememberScaffoldState(rememberDrawerState(initialValue = DrawerValue.Closed))*/
     val navController =
         rememberNavController() //Esto lo que hace es que le recuerda donde es en que pantalla esta el usuario
     val navBackStackEntry by navController.currentBackStackEntryAsState()//Servira para que cuando se le de al boton de atras, regrese a una pantalla de las que a navegado el usuario
@@ -35,11 +33,21 @@ fun Screens() {
         navBackStackEntry?.destination?.route //Esto lo que hace es que almacena el historial de donde es que ha estado navegando el usuario
     val items =
         NavItemsList()//Esta es una lista de items que almacena la informacion para general los iconos de los botones de navegacion
-    visibility = currentRoute != ScreenRoute.Contacts.route
+    val visibility = currentRoute != ScreenRoute.Contacts.route
+
+    fun titleRoute(currentRout: String?): String {
+        return when (currentRout) {
+            ScreenRoute.Chats.route -> "WhatsApp"
+            ScreenRoute.Status.route -> "News"
+            ScreenRoute.Community.route -> "Community"
+            ScreenRoute.Calls.route -> "Calls"
+            else -> ""
+        }
+    }
 
     Scaffold(
         topBar = {
-            TopAppBarContent(visibility)
+            TopAppBarContent(visibility, titleRoute(currentRoute))
         },//Es la barra de navegacion de arriba
         bottomBar = {// Es la barra de navegacion de la parte de abajo
             AnimatedVisibility(visibility) {
@@ -65,6 +73,7 @@ fun Screens() {
         },
         floatingActionButton = {
             AnimatedVisibility(visibility) {
+                //Cuando se presiona aca el floatingactyiobutton instancia la pantalla del NavBarGraph que es la que tiene el otro scaffold
                 FloatingActionButton(
                     onClick = {
                         navController.navigate(ScreenRoute.Contacts.route) {
@@ -73,8 +82,11 @@ fun Screens() {
                                     saveState = true
                                 }
                             }
+                            launchSingleTop = true
+                            restoreState = true
+
                         }
-                    },
+                    }
                 ) {
                     Icon(
                         imageVector = Icons.Filled.AddComment,
@@ -87,7 +99,7 @@ fun Screens() {
     ) { innerPadding ->
         NavBarGraph(
             navController = navController,
-            innerPadding = innerPadding
+            innerPadding = innerPadding,
         )
     }
 }
@@ -95,9 +107,9 @@ fun Screens() {
 @SuppressLint("UnusedMaterial3ScaffoldPaddingParameter")
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-private fun TopAppBarContent(visibility: Boolean) {
+private fun TopAppBarContent(visibility: Boolean, title: String?) {
     AnimatedVisibility(visibility) {
-        Header({}, {}, {})
+        Header({}, {}, {}, title)
     }
 }
 

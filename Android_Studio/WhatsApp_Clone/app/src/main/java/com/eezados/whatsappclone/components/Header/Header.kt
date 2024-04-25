@@ -1,9 +1,7 @@
 @file:Suppress("UNUSED_EXPRESSION")
 
-package com.eezados.whatsappclone.components
+package com.eezados.whatsappclone.components.Header
 
-import android.service.autofill.OnClickAction
-import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
@@ -11,12 +9,10 @@ import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
-import androidx.compose.material.Colors
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.CameraAlt
 import androidx.compose.material.icons.filled.MoreVert
 import androidx.compose.material.icons.filled.Search
-import androidx.compose.material3.ColorScheme
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.Text
@@ -39,6 +35,7 @@ fun Header(
     statusClick: () -> Unit,
     searchClick: () -> Unit,
     moreOptionsClick: () -> Unit,
+    title: String?
 ) {
     Row(
         modifier = Modifier
@@ -49,11 +46,15 @@ fun Header(
         verticalAlignment = Alignment.CenterVertically
     ) {
         Box(modifier = Modifier.padding(start = 8.dp)) {
-            Text(
-                stringResource(R.string.top_bar_text),
-                fontWeight = FontWeight.Medium,
-                fontSize = 22.sp
-            )
+            title.let {
+                it?.let { it1 ->
+                    Text(
+                        it1,
+                        fontWeight = FontWeight.Medium,
+                        fontSize = 22.sp
+                    )
+                }
+            }
         }
 
         Box() {
@@ -82,7 +83,7 @@ fun Header(
 }
 
 @Composable
-fun UserOptions(
+private fun UserOptions(
     click: () -> Unit,
     icon: ImageVector,
     description: String,
@@ -99,5 +100,5 @@ fun UserOptions(
 @Preview(showSystemUi = true)
 @Composable
 private fun HeaderPreview() {
-    Header({}, {}, {})
+    Header( {}, {}, {}, "")
 }

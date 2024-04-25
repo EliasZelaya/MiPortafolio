@@ -36,9 +36,9 @@ fun CallsScreen(
             Text("Favorites")
             Text("Edite")
         }
-        for (n in 1..3) {
+        //for (n in 1..3) {
             FavoriteCalls()
-        }
+        //}
 
         Row(
             modifier = Modifier
@@ -48,7 +48,7 @@ fun CallsScreen(
             Text("Resents")
         }
 
-        for (n in 1 .. 10) {
+        for (n in 1 .. 2) {
             CreateCalls()
         }
     }

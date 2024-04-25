@@ -1,7 +1,7 @@
 <resources>
     <string name="app_name">WhatsAppClone</string>
-    <!--TopBar-->
-    <string name="top_bar_text">WhatsApp</string>
+    <!--TopBarContacts-->
+    <string name="header_contacts">Contacts</string>
 
     <!--Channels-->
     <string name="follow">Follow</string>

@@ -5,16 +5,12 @@ import androidx.compose.material.icons.automirrored.filled.Message
 import androidx.compose.material.icons.automirrored.outlined.Message
 import androidx.compose.material.icons.filled.Call
 import androidx.compose.material.icons.filled.HistoryToggleOff
-import androidx.compose.material.icons.filled.Message
 import androidx.compose.material.icons.filled.People
-import androidx.compose.material.icons.filled.Person
 import androidx.compose.material.icons.outlined.Call
 import androidx.compose.material.icons.outlined.HistoryToggleOff
-import androidx.compose.material.icons.outlined.Message
 import androidx.compose.material.icons.outlined.People
-import androidx.compose.material.icons.outlined.Person
 import androidx.compose.runtime.Composable
-import com.eezados.whatsappclone.components.ScreenRoute
+import com.eezados.whatsappclone.components.Home.ScreenRoute
 
 @Composable
 fun NavItemsList(): List<NavItems> {
@@ -22,28 +18,24 @@ fun NavItemsList(): List<NavItems> {
         NavItems(
             "Chats",
                 ScreenRoute.Chats.route,
-            "WhatsApp",
             Icons.AutoMirrored.Filled.Message,
             Icons.AutoMirrored.Outlined.Message
         ),
         NavItems(
             "Status",
             ScreenRoute.Status.route,
-            "",
             Icons.Filled.HistoryToggleOff,
             Icons.Outlined.HistoryToggleOff
         ),
         NavItems(
             "Community",
             ScreenRoute.Community.route,
-            "",
             Icons.Filled.People,
             Icons.Outlined.People
         ),
         NavItems(
             "Calls",
             ScreenRoute.Calls.route,
-            "",
             Icons.Filled.Call,
             Icons.Outlined.Call
         )

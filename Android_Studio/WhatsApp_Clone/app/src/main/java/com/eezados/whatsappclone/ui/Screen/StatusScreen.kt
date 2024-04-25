@@ -16,6 +16,7 @@ import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.ChevronRight
 import androidx.compose.material.icons.filled.MoreVert
+import androidx.compose.material.icons.outlined.Add
 import androidx.compose.material.icons.outlined.ControlPoint
 import androidx.compose.material3.HorizontalDivider
 import androidx.compose.material3.Icon
@@ -59,11 +60,11 @@ fun StatusScreen(innerPadding: PaddingValues) {
                 .fillMaxWidth()
                 .padding(top = 16.dp)
         ) {
-            for (n in 1..5) {
-                item {
-                    UserStatus(n)
-                }
+//            for (n in 1..5) {
+            item {
+                UserStatus(1)
             }
+//            }
         }
 
         HorizontalDivider(
@@ -89,7 +90,7 @@ fun StatusScreen(innerPadding: PaddingValues) {
                 )
 
                 Icon(
-                    imageVector = Icons.Outlined.ControlPoint,
+                    imageVector = Icons.Outlined.Add,
                     contentDescription = "More Channels"
                 )
             }
@@ -97,13 +98,13 @@ fun StatusScreen(innerPadding: PaddingValues) {
         Spacer(modifier = Modifier.padding(6.dp))
 
         Column {
-            for (n in 1..5) {
-                CreateChat(
-                    Modifier
-                        .fillMaxSize()
-                        .padding(start = 12.dp, end = 8.dp)
-                )
-            }
+//            for (n in 1..5) {
+            CreateChat(
+                Modifier
+                    .fillMaxSize()
+                    .padding(start = 12.dp, end = 8.dp)
+            )
+//            }
         }
 
 
@@ -132,7 +133,7 @@ fun StatusScreen(innerPadding: PaddingValues) {
 
         LazyRow(modifier = Modifier.padding(start = 4.dp)) {
             item {
-                for (n in 1..10)
+                for (n in 1..2)
                     Recommendations()
             }
         }
