@@ -1,5 +1,7 @@
 package com.eezados.whatsappclone.components.ChatsComponents
 
+import androidx.annotation.DrawableRes
+import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
@@ -22,6 +24,10 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.RectangleShape
+import androidx.compose.ui.graphics.vector.ImageVector
+import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.res.vectorResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
@@ -40,9 +46,9 @@ fun CreateChat(
             horizontalArrangement = Arrangement.Center
         ) {
             Row {
-                AsyncImage(
-                    model = R.drawable.hola,
-                    contentDescription = "User Image",
+                Image(
+                    painter = painterResource(R.drawable.hola),
+                    contentDescription = stringResource(R.string.user_image),
                     modifier = Modifier.clip(shape = CircleShape)
                 )
                 Column(modifier = Modifier.padding(start = 12.dp)) {
@@ -62,7 +68,7 @@ fun CreateChat(
                     ) {
                         Icon(
                             imageVector = Icons.Default.Check,
-                            contentDescription = "View",
+                            contentDescription = stringResource(R.string.view),
                             modifier = Modifier.size(16.dp)
                         )
                         Spacer(modifier = Modifier.padding(start = 6.dp))

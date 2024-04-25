@@ -25,11 +25,13 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.vector.ImageVector
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import com.eezados.whatsappclone.R
 
 
 @Composable
@@ -47,14 +49,33 @@ fun Header(
         verticalAlignment = Alignment.CenterVertically
     ) {
         Box(modifier = Modifier.padding(start = 8.dp)) {
-            Text("WhatsApp", fontWeight = FontWeight.Medium , fontSize = 22.sp)
+            Text(
+                stringResource(R.string.top_bar_text),
+                fontWeight = FontWeight.Medium,
+                fontSize = 22.sp
+            )
         }
 
         Box() {
             Row(horizontalArrangement = Arrangement.SpaceAround) {
-                UserOptions(statusClick, Icons.Default.CameraAlt, description = "State", 12.dp)
-                UserOptions(searchClick ,Icons.Default.Search, description = "Search contacts", 10.dp)
-                UserOptions(moreOptionsClick ,Icons.Default.MoreVert, description = "More options", 0.dp)
+                UserOptions(
+                    statusClick,
+                    Icons.Default.CameraAlt,
+                    description = stringResource(R.string.camera),
+                    12.dp
+                )
+                UserOptions(
+                    searchClick,
+                    Icons.Default.Search,
+                    description = "Search contacts",
+                    10.dp
+                )
+                UserOptions(
+                    moreOptionsClick,
+                    Icons.Default.MoreVert,
+                    description = "More options",
+                    0.dp
+                )
             }
         }
     }

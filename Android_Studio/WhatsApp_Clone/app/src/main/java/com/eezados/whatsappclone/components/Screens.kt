@@ -1,6 +1,7 @@
 package com.eezados.whatsappclone.components
 
 import android.annotation.SuppressLint
+import androidx.compose.animation.AnimatedVisibility
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material.icons.Icons
@@ -24,6 +25,7 @@ import com.eezados.whatsappclone.components.Navigations.NavigationMenu
 @SuppressLint("UnusedMaterial3ScaffoldPaddingParameter")
 @Composable
 fun Screens() {
+    var visibility = true
     /*val scaffoldState: ScaffoldState =
         rememberScaffoldState(rememberDrawerState(initialValue = DrawerValue.Closed))*/
     val navController =
@@ -33,45 +35,53 @@ fun Screens() {
         navBackStackEntry?.destination?.route //Esto lo que hace es que almacena el historial de donde es que ha estado navegando el usuario
     val items =
         NavItemsList()//Esta es una lista de items que almacena la informacion para general los iconos de los botones de navegacion
+    visibility = currentRoute != ScreenRoute.Contacts.route
 
     Scaffold(
-        topBar = { TopAppBarContent() },//Es la barra de navegacion de arriba
+        topBar = {
+            TopAppBarContent(visibility)
+        },//Es la barra de navegacion de arriba
         bottomBar = {// Es la barra de navegacion de la parte de abajo
-            NavigationMenu(
-                Modifier
-                    .fillMaxWidth()
-                    .padding(16.dp),
-                items = items,//Se le envia una variable de tipo NavItemList que contiene lo componentes para generar los botones
-                currentRoute = currentRoute//Es el que almacena el historial para la navegacion del usuario
-            ) { navItems ->//Esto es lo que le da la funcionalidad al boton de navegacion para cada
-                // vez que se le precione a un boton distino navegue por las demas pantallas
-                navController.navigate(navItems.route) {//Permite la navegacion
-                    navController.graph.startDestinationRoute?.let { startDestinationRoute ->
-                        popUpTo(startDestinationRoute) {
-                            saveState = true
+            AnimatedVisibility(visibility) {
+                NavigationMenu(
+                    Modifier
+                        .fillMaxWidth()
+                        .padding(16.dp),
+                    items = items,//Se le envia una variable de tipo NavItemList que contiene lo componentes para generar los botones
+                    currentRoute = currentRoute//Es el que almacena el historial para la navegacion del usuario
+                ) { navItems ->//Esto es lo que le da la funcionalidad al boton de navegacion para cada
+                    // vez que se le precione a un boton distino navegue por las demas pantallas
+                    navController.navigate(navItems.route) {//Permite la navegacion
+                        navController.graph.startDestinationRoute?.let { startDestinationRoute ->
+                            popUpTo(startDestinationRoute) {
+                                saveState = true
+                            }
                         }
+                        launchSingleTop = true
+                        restoreState = true
                     }
-                    launchSingleTop = true
-                    restoreState = true
                 }
             }
         },
         floatingActionButton = {
-            FloatingActionButton(
-                onClick = { navController.navigate(ScreenRoute.Contacts.route) {
-                    navController.graph.startDestinationRoute?.let {
-                        startDestinationRoute ->
-                        popUpTo(startDestinationRoute) {
-                            saveState = true
+            AnimatedVisibility(visibility) {
+                FloatingActionButton(
+                    onClick = {
+                        navController.navigate(ScreenRoute.Contacts.route) {
+                            navController.graph.startDestinationRoute?.let { startDestinationRoute ->
+                                popUpTo(startDestinationRoute) {
+                                    saveState = true
+                                }
+                            }
                         }
-                    }
+                    },
+                ) {
+                    Icon(
+                        imageVector = Icons.Filled.AddComment,
+                        contentDescription = "a",
+                    )
                 }
-                },
-            ) {
-                Icon(
-                    imageVector = Icons.Filled.AddComment,
-                    contentDescription = "a",
-                )
+
             }
         }
     ) { innerPadding ->
@@ -85,8 +95,10 @@ fun Screens() {
 @SuppressLint("UnusedMaterial3ScaffoldPaddingParameter")
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-private fun TopAppBarContent() {
-    Header({}, {}, {})
+private fun TopAppBarContent(visibility: Boolean) {
+    AnimatedVisibility(visibility) {
+        Header({}, {}, {})
+    }
 }
 
 @Preview(showSystemUi = true)

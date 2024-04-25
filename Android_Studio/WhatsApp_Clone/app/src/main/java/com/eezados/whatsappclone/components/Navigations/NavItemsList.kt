@@ -1,6 +1,8 @@
 package com.eezados.whatsappclone.components.Navigations
 
 import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.automirrored.filled.Message
+import androidx.compose.material.icons.automirrored.outlined.Message
 import androidx.compose.material.icons.filled.Call
 import androidx.compose.material.icons.filled.HistoryToggleOff
 import androidx.compose.material.icons.filled.Message
@@ -20,24 +22,28 @@ fun NavItemsList(): List<NavItems> {
         NavItems(
             "Chats",
                 ScreenRoute.Chats.route,
-            Icons.Filled.Message,
-            Icons.Outlined.Message
+            "WhatsApp",
+            Icons.AutoMirrored.Filled.Message,
+            Icons.AutoMirrored.Outlined.Message
         ),
         NavItems(
             "Status",
             ScreenRoute.Status.route,
+            "",
             Icons.Filled.HistoryToggleOff,
             Icons.Outlined.HistoryToggleOff
         ),
         NavItems(
             "Community",
             ScreenRoute.Community.route,
+            "",
             Icons.Filled.People,
             Icons.Outlined.People
         ),
         NavItems(
             "Calls",
             ScreenRoute.Calls.route,
+            "",
             Icons.Filled.Call,
             Icons.Outlined.Call
         )

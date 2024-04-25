@@ -1,3 +1,14 @@
 <resources>
     <string name="app_name">WhatsAppClone</string>
+    <!--TopBar-->
+    <string name="top_bar_text">WhatsApp</string>
+
+    <!--Channels-->
+    <string name="follow">Follow</string>
+    <string name="followed">Followed</string>
+
+    <!--Content descriptions-->
+    <string name="camera">Camera</string>
+    <string name="user_image">User Image</string>
+    <string name="view">View</string>
 </resources>
