@@ -1,17 +1,23 @@
 package com.eezados.whatsappclone.components.Home
 
 import android.annotation.SuppressLint
+import android.graphics.drawable.Icon
 import androidx.compose.animation.AnimatedVisibility
+import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.AddComment
+import androidx.compose.material.icons.filled.Edit
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.FloatingActionButton
 import androidx.compose.material3.Icon
 import androidx.compose.material3.Scaffold
+import androidx.compose.material3.SmallFloatingActionButton
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
@@ -34,6 +40,8 @@ fun Screens() {
     val items =
         NavItemsList()//Esta es una lista de items que almacena la informacion para general los iconos de los botones de navegacion
     val visibility = currentRoute != ScreenRoute.Contacts.route
+    val visibilityIcon = currentRoute != ScreenRoute.Community.route
+    val visibilityButton = currentRoute != ScreenRoute.Status.route
 
     fun titleRoute(currentRout: String?): String {
         return when (currentRout) {
@@ -47,7 +55,7 @@ fun Screens() {
 
     Scaffold(
         topBar = {
-            TopAppBarContent(visibility, titleRoute(currentRoute))
+            TopAppBarContent(visibility, titleRoute(currentRoute), visibilityIcon)
         },//Es la barra de navegacion de arriba
         bottomBar = {// Es la barra de navegacion de la parte de abajo
             AnimatedVisibility(visibility) {
@@ -72,28 +80,36 @@ fun Screens() {
             }
         },
         floatingActionButton = {
-            AnimatedVisibility(visibility) {
-                //Cuando se presiona aca el floatingactyiobutton instancia la pantalla del NavBarGraph que es la que tiene el otro scaffold
-                FloatingActionButton(
-                    onClick = {
-                        navController.navigate(ScreenRoute.Contacts.route) {
-                            navController.graph.startDestinationRoute?.let { startDestinationRoute ->
-                                popUpTo(startDestinationRoute) {
-                                    saveState = true
-                                }
-                            }
-                            launchSingleTop = true
-                            restoreState = true
-
-                        }
+            Column(horizontalAlignment = Alignment.CenterHorizontally) {
+                if (!visibilityButton) {
+                    SmallFloatingActionButton(onClick = { /*TODO*/ }) {
+                        Icon(imageVector = Icons.Default.Edit, contentDescription = "Write Status")
                     }
-                ) {
-                    Icon(
-                        imageVector = Icons.Filled.AddComment,
-                        contentDescription = "a",
-                    )
                 }
+                Spacer(modifier = Modifier.padding(top = 12.dp))
+                AnimatedVisibility(visibility) {
+                    //Cuando se presiona aca el floatingactyiobutton instancia la pantalla del NavBarGraph que es la que tiene el otro scaffold
+                    FloatingActionButton(
+                        onClick = {
+                            navController.navigate(ScreenRoute.Contacts.route) {
+                                navController.graph.startDestinationRoute?.let { startDestinationRoute ->
+                                    popUpTo(startDestinationRoute) {
+                                        saveState = true
+                                    }
+                                }
+                                launchSingleTop = true
+                                restoreState = true
 
+                            }
+                        }
+                    ) {
+                        Icon(
+                            imageVector = Icons.Filled.AddComment,
+                            contentDescription = "a",
+                        )
+                    }
+
+                }
             }
         }
     ) { innerPadding ->
@@ -107,9 +123,9 @@ fun Screens() {
 @SuppressLint("UnusedMaterial3ScaffoldPaddingParameter")
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-private fun TopAppBarContent(visibility: Boolean, title: String?) {
+private fun TopAppBarContent(visibility: Boolean, title: String?, visibilityIcon: Boolean) {
     AnimatedVisibility(visibility) {
-        Header({}, {}, {}, title)
+        Header({}, {}, {}, title, visibilityIcon)
     }
 }
 

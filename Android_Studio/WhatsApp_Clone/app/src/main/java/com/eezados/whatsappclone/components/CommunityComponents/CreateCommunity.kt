@@ -22,7 +22,7 @@ import com.eezados.whatsappclone.components.ChatsComponents.CreateChat
 @Composable
 fun MakeCommunity() {
     Column {
-        CreateCommunity()
+        UserCommunity()
         NoticeCommunity()
 
         for (n in 1..2) {

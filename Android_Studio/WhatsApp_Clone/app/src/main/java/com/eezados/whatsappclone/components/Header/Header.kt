@@ -35,7 +35,8 @@ fun Header(
     statusClick: () -> Unit,
     searchClick: () -> Unit,
     moreOptionsClick: () -> Unit,
-    title: String?
+    title: String?,
+    visibility: Boolean
 ) {
     Row(
         modifier = Modifier
@@ -63,14 +64,17 @@ fun Header(
                     statusClick,
                     Icons.Default.CameraAlt,
                     description = stringResource(R.string.camera),
-                    12.dp
-                )
-                UserOptions(
-                    searchClick,
-                    Icons.Default.Search,
-                    description = "Search contacts",
                     10.dp
                 )
+                if (visibility) {
+                    UserOptions(
+                        searchClick,
+                        Icons.Default.Search,
+                        description = "Search contacts",
+                        8.dp
+                    )
+                }
+
                 UserOptions(
                     moreOptionsClick,
                     Icons.Default.MoreVert,
@@ -100,5 +104,5 @@ private fun UserOptions(
 @Preview(showSystemUi = true)
 @Composable
 private fun HeaderPreview() {
-    Header( {}, {}, {}, "")
+    Header({}, {}, {}, "", true)
 }
