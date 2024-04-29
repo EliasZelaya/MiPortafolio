@@ -28,9 +28,10 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.elias.uca_life_v2.R
+import com.elias.uca_life_v2.mvvm.LoginViewModel
 
 @Composable
-fun LoginScreen() {
+fun LoginScreen(viewModel: LoginViewModel) {
     val checked by remember { mutableStateOf(true) }
     Column(
         modifier = Modifier.fillMaxSize(),
@@ -45,13 +46,13 @@ fun LoginScreen() {
             )
         }
 
-        LoginField()
-        PasswordField()
+        LoginField(LoginViewModel())
+        PasswordField(LoginViewModel())
 
         Spacer(modifier = Modifier.padding(6.dp))
         CheckDevice(checked = checked)
 
-        Button(onClick = { /*TODO*/ }) {
+        Button(onClick = {  }) {
             Text("Inicar sesion")
         }
     }
@@ -60,5 +61,5 @@ fun LoginScreen() {
 @Preview(showSystemUi = true)
 @Composable
 private fun MyPreview() {
-    LoginScreen()
+    LoginScreen(LoginViewModel())
 }

@@ -10,6 +10,8 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
+import com.elias.uca_life_v2.Components.LoginComponents.LoginScreen
+import com.elias.uca_life_v2.mvvm.LoginViewModel
 import com.elias.uca_life_v2.ui.theme.UCA_Life_V2Theme
 
 class MainActivity : ComponentActivity() {
@@ -22,7 +24,6 @@ class MainActivity : ComponentActivity() {
                     modifier = Modifier.fillMaxSize(),
                     color = MaterialTheme.colorScheme.background
                 ) {
-                    
                 }
             }
         }

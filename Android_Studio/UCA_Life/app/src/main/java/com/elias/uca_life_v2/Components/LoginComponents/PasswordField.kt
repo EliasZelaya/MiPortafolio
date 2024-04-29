@@ -9,29 +9,37 @@ import androidx.compose.material3.Text
 import androidx.compose.material3.TextField
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.MutableState
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.livedata.observeAsState
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
-import androidx.compose.ui.focus.FocusDirection
-import androidx.compose.ui.platform.LocalFocusManager
-import androidx.compose.ui.text.input.ImeAction
+import androidx.compose.ui.text.input.KeyboardType
+import androidx.compose.ui.text.input.PasswordVisualTransformation
+import androidx.lifecycle.createSavedStateHandle
+import com.elias.uca_life_v2.mvvm.LoginViewModel
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.coroutineScope
 
 @Composable
-fun PasswordField() {
+fun PasswordField(viewModel: LoginViewModel) {
+    val password: String by viewModel.password.observeAsState("")
     val user: MutableState<String> = remember {
         mutableStateOf("")
     }
 
     TextField(
-        value = user.value,
+        value =
+            password,
         onValueChange = {
-            user.value = it
+            viewModel.onLoginField("", it)
         },
         maxLines = 1,
         singleLine = true,
         leadingIcon = {
             Icon(imageVector = Icons.Default.Person, contentDescription = "Icono de persona")
         },
-        keyboardOptions = KeyboardOptions(imeAction = ImeAction.Done),
+        keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Password),
+        visualTransformation = PasswordVisualTransformation(),
         keyboardActions = KeyboardActions(
             onDone = {}
         ),
