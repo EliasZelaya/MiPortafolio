@@ -1,16 +1,21 @@
 package com.elias.uca_life_v2.Components.LoginComponents
 
+import android.content.res.Configuration
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.layout.width
+import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.text.KeyboardActions
+import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Person
 import androidx.compose.material3.Button
@@ -26,10 +31,12 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.focus.FocusDirection
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.RectangleShape
 import androidx.compose.ui.platform.LocalFocusManager
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewmodel.compose.viewModel
 import com.elias.uca_life_v2.R
@@ -41,7 +48,9 @@ fun LoginScreen() {
     val checked by remember { mutableStateOf(true) }
   //  val username = viewModel.username.value
     Column(
-        modifier = Modifier.fillMaxSize(),
+        modifier = Modifier
+            .fillMaxSize().padding(24.dp)
+            .verticalScroll(rememberScrollState()),
         horizontalAlignment = Alignment.CenterHorizontally,
         verticalArrangement = Arrangement.Center
     ) {
@@ -57,15 +66,26 @@ fun LoginScreen() {
         PasswordField(vm)
 
         Spacer(modifier = Modifier.padding(6.dp))
-        CheckDevice(checked = checked, vm, Modifier.fillMaxWidth().padding(18.dp))
+        CheckDevice(checked = checked, vm)
 
-        Button(onClick = { }) {
+        Button(modifier = Modifier.width(275.dp) ,onClick = { }, shape = RectangleShape) {
             Text("Inicar sesion")
+        }
+
+        Row(
+            modifier = Modifier
+                .fillMaxWidth()
+                .padding(6.dp),
+            horizontalArrangement = Arrangement.Center
+            ) {
+            Text("Crear cuenta", fontSize = 10.sp)
+            Spacer(modifier = Modifier.width(75.dp))
+            Text("Olvide mi contraseña", fontSize = 10.sp)
         }
     }
 }
 
-@Preview(showSystemUi = true)
+@Preview(uiMode = Configuration.UI_MODE_NIGHT_YES)
 @Composable
 private fun MyPreview() {
     LoginScreen()
