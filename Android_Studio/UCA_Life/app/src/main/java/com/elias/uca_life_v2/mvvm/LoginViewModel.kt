@@ -11,19 +11,23 @@ import androidx.lifecycle.viewModelScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
-class LoginViewModel() : ViewModel() {
+class LoginViewModel : ViewModel() {
     private val _username = MutableLiveData<String>()
     val username: LiveData<String> = _username
 
     private val _password = MutableLiveData<String>()
     val password: LiveData<String> = _password
 
-    private val _checkLogin = MutableLiveData<Boolean>()
-    val checkLogin: LiveData<Boolean> = _checkLogin
+    private val _checkDevice = MutableLiveData<Boolean>()
+    val checked: LiveData<Boolean> = _checkDevice
 
     fun onLoginField(userName: String, userPassword: String) {
         _username.value = userName
         _password.value = userPassword
+    }
+
+    fun checkDevice(checked: Boolean) {
+        _checkDevice.value = !checked
     }
 
 

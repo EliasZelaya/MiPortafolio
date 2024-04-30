@@ -23,15 +23,13 @@ import com.elias.uca_life_v2.mvvm.LoginViewModel
 @Composable
 fun LoginField(viewModel: LoginViewModel) {
     val userName by viewModel.username.observeAsState("")
-    val user: MutableState<String> = remember {
-        mutableStateOf("")
-    }
+    val password by viewModel.password.observeAsState("")
     val focusManager = LocalFocusManager.current
 
     TextField(
         value = userName,
         onValueChange = {
-            viewModel.onLoginField(it,"")
+            viewModel.onLoginField(it, password)
         },
         maxLines = 1,
         singleLine = true,

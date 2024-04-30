@@ -23,15 +23,13 @@ import kotlinx.coroutines.coroutineScope
 @Composable
 fun PasswordField(viewModel: LoginViewModel) {
     val password: String by viewModel.password.observeAsState("")
-    val user: MutableState<String> = remember {
-        mutableStateOf("")
-    }
+    val username: String by viewModel.username.observeAsState("")
 
     TextField(
         value =
             password,
         onValueChange = {
-            viewModel.onLoginField("", it)
+            viewModel.onLoginField(username, it)
         },
         maxLines = 1,
         singleLine = true,

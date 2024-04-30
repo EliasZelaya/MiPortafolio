@@ -26,7 +26,7 @@ object AppModule {
     @Provides
     fun providePokeApi(): PokeApi {
         return Retrofit.Builder()
-            .addConverterFactory(GsonConverterFactory.create())
+            .addConverterFactory(GsonConverterFactory.create())//Convierte el json a data class de kotlin
             .baseUrl(BASE_URL)
             .build()
             .create(PokeApi::class.java)
