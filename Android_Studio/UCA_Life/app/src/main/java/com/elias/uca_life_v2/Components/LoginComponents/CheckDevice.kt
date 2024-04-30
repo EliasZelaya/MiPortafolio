@@ -25,29 +25,22 @@ import com.elias.uca_life_v2.mvvm.LoginViewModel
 
 @Composable
 fun CheckDevice(
-    checked: Boolean,
+    modifier: Modifier,
     viewmodel: LoginViewModel,
 ) {
     val check by viewmodel.checked.observeAsState(false)
-    Column(
-        modifier = Modifier.padding(10.dp),
-        horizontalAlignment = Alignment.CenterHorizontally
-    ) {
-        Row(
-            horizontalArrangement = Arrangement.spacedBy(4.dp),
-        ) {
-            Checkbox(
-                checked = check,
-                onCheckedChange = null,
-                modifier = Modifier.clickable(onClick = { viewmodel.checkDevice(check) })
-            )
-            Text("Recuerdame en este dispositivo")
-        }
-    }
-}
 
-@Preview
-@Composable
-private fun My() {
-    CheckDevice(checked = true, viewmodel = LoginViewModel())
+    Row(
+        modifier = modifier,
+        horizontalArrangement = Arrangement.spacedBy(4.dp),
+        verticalAlignment = Alignment.CenterVertically
+    ) {
+        Checkbox(
+            checked = check,
+            onCheckedChange = null,
+            modifier = Modifier.clickable(onClick = { viewmodel.checkDevice(check) })
+        )
+        Text("Recuerdame en este dispositivo")
+    }
+
 }

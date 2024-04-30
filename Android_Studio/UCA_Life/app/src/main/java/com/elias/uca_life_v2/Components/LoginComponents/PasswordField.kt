@@ -13,6 +13,7 @@ import androidx.compose.runtime.getValue
 import androidx.compose.runtime.livedata.observeAsState
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
+import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.text.input.PasswordVisualTransformation
 import androidx.lifecycle.createSavedStateHandle
@@ -21,7 +22,10 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.coroutineScope
 
 @Composable
-fun PasswordField(viewModel: LoginViewModel) {
+fun PasswordField(
+    modifier: Modifier,
+    viewModel: LoginViewModel
+) {
     val password: String by viewModel.password.observeAsState("")
     val username: String by viewModel.username.observeAsState("")
 
@@ -43,5 +47,6 @@ fun PasswordField(viewModel: LoginViewModel) {
         ),
         placeholder = { Text("Ingrese su contraseña") },
         label = { Text("Contraseña") },
+        modifier = modifier
     )
 }
