@@ -1,4 +1,4 @@
-package com.eezados.whatsappclone.components.ChatsComponents
+package com.eezados.whatsappclone.components.HomeComponents
 
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.fillMaxSize
