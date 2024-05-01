@@ -18,8 +18,7 @@ import androidx.compose.material3.Button
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
-import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.remember
+import androidx.compose.runtime.livedata.observeAsState
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.RectangleShape
@@ -50,13 +49,20 @@ fun LoginScreen() {
             )
         }
 
-        LoginField(Modifier.width(280.dp) ,vm)
+        LoginField(Modifier.width(280.dp), vm)
         Spacer(modifier = Modifier.padding(4.dp))
-        PasswordField(Modifier.width(280.dp) ,vm)
+        PasswordField(Modifier.width(280.dp), vm)
 
-        CheckDevice(Modifier.padding(14.dp) ,vm)
+        Box(modifier = Modifier.padding(top = 14.dp, bottom = 14.dp)) {
+            CheckDevice(Modifier.padding(14.dp), vm)
+        }
 
-        Button(modifier = Modifier.width(275.dp) ,onClick = { }, shape = RectangleShape) {
+        Button(
+            modifier = Modifier.width(275.dp),
+            onClick = { },
+            shape = RectangleShape,
+            enabled = vm.enableButton()
+        ) {
             Text("Inicar sesion")
         }
 
@@ -65,7 +71,7 @@ fun LoginScreen() {
                 .fillMaxWidth()
                 .padding(6.dp),
             contentAlignment = Alignment.Center
-            ) {
+        ) {
             Row(horizontalArrangement = Arrangement.spacedBy(64.dp)) {
                 UserOptions("Crear cuenta", 12.sp)
                 UserOptions("Olvide mi contraseña", 12.sp)

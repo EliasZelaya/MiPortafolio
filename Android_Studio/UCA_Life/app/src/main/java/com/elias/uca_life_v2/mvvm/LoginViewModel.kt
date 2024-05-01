@@ -21,6 +21,9 @@ class LoginViewModel : ViewModel() {
     private val _checkDevice = MutableLiveData<Boolean>()
     val checked: LiveData<Boolean> = _checkDevice
 
+    private val _enable = MutableLiveData<Boolean>()
+    val enable: LiveData<Boolean> = _enable
+
     fun onLoginField(userName: String, userPassword: String) {
         _username.value = userName
         _password.value = userPassword
@@ -29,7 +32,6 @@ class LoginViewModel : ViewModel() {
     fun checkDevice(checked: Boolean) {
         _checkDevice.value = !checked
     }
-
 
     private fun checkPassword(password: String): Boolean = password.length > 2
     private fun checkUsername(username: String): Boolean = username == "Yo"
