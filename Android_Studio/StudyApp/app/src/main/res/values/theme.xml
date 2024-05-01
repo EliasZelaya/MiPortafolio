@@ -1,12 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <style name="Theme.MySplashScreen" parent="Theme.SplashScreen">
-        <item name="windowSplashScreenBackground">@color/white</item>
+    <style name="Theme.DarkSplashScreen" parent="Theme.SplashScreen">
+        <item name="windowSplashScreenBackground">@color/black</item>
         <item name="windowSplashScreenAnimatedIcon">@drawable/logo</item>
         <item name="postSplashScreenTheme">@style/Theme.StudyApp</item>
         <item name="android:windowNoTitle">true</item>
         <item name="android:windowActionBar">false</item>
     </style>
-
-    <style name="Theme.StudyApp" parent="android:Theme.Material.Light.NoActionBar"/>
 </resources>

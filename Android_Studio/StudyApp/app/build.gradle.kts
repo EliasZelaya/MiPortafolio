@@ -51,6 +51,15 @@ android {
 
 dependencies {
 
+    //Simple calendar
+    implementation("androidx.compose.material:material-icons-extended:1.6.7")
+
+    //Navigation
+    implementation("androidx.navigation:navigation-compose:2.7.7")
+
+    //SplashScreen
+    implementation("androidx.core:core-splashscreen:1.0.1")
+
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.lifecycle.runtime.ktx)
     implementation(libs.androidx.activity.compose)
