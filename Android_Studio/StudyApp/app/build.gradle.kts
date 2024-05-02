@@ -64,6 +64,9 @@ dependencies {
     implementation("androidx.lifecycle:lifecycle-viewmodel-compose:2.7.0")
     implementation ("androidx.compose.runtime:runtime-livedata:1.6.6")
 
+    //Context?
+    implementation("androidx.datastore:datastore-preferences:1.1.0")
+
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.lifecycle.runtime.ktx)
     implementation(libs.androidx.activity.compose)
