@@ -1,7 +1,8 @@
 package com.elias.study_app.components.logincomponents
 
 import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.Person
+import androidx.compose.material.icons.filled.Key
+import androidx.compose.material.icons.filled.Visibility
 import androidx.compose.material3.Icon
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextField
@@ -12,7 +13,7 @@ import androidx.compose.ui.Modifier
 import com.elias.study_app.viewmodel.LoginScreenViewModel
 
 @Composable
-fun UsernameField(
+fun PasswordField(
     modifier: Modifier,
     viewmodel: LoginScreenViewModel
 ) {
@@ -24,9 +25,20 @@ fun UsernameField(
         onValueChange = {
             viewmodel.onLoginField(it, password)
         },
-        label = { Text(text = "Name")},
-        placeholder = { Text(text = "Write your name")},
-        leadingIcon = { Icon(imageVector = Icons.Default.Person, contentDescription = "User icon") },
+        label = { Text(text = "Name") },
+        placeholder = { Text(text = "Write your name") },
+        leadingIcon = {
+            Icon(
+                imageVector = Icons.Default.Key,
+                contentDescription = "User password icon"
+            )
+        },
+        trailingIcon = {
+            Icon(
+                imageVector = Icons.Default.Visibility,
+                contentDescription = "Visibility password"
+            )
+        },
         modifier = modifier
     )
 }
