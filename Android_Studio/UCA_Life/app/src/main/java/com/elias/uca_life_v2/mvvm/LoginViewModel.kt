@@ -22,7 +22,7 @@ class LoginViewModel : ViewModel() {
     val checked: LiveData<Boolean> = _checkDevice
 
     private val _enable = MutableLiveData<Boolean>()
-    val enable: LiveData<Boolean> = _enablez
+    val enable: LiveData<Boolean> = _enable
 
     fun onLoginField(userName: String, userPassword: String) {
         _username.value = userName
