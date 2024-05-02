@@ -1,5 +1,4 @@
 package com.elias.study_app.viewmodel
-
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Visibility
 import androidx.compose.material.icons.filled.VisibilityOff
@@ -27,11 +26,18 @@ class LoginScreenViewModel : ViewModel() {
     private val _passwordKey = MutableLiveData<VisualTransformation>()
     val passwordKey: LiveData<VisualTransformation> = _passwordKey
 
+    private val _enable = MutableLiveData<Boolean>()
+    val enable: LiveData<Boolean> = _enable
+
     fun onLoginField(name: String, password: String) {
         _username.value = name
         _password.value = password
+
+        _enable.value = checkPassword(_password.value) && checkUsername(_username.value)
     }
 
+    private fun checkPassword(password: String?): Boolean = (password?.length ?: 0) > 4
+    private fun checkUsername(username: String?): Boolean = username != null
     fun passVisibility(check: Boolean) {
         _checkVisibility.value = !check
 
