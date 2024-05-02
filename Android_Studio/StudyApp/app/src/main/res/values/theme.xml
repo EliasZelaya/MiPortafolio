@@ -2,7 +2,7 @@
 <resources>
     <style name="Theme.DarkSplashScreen" parent="Theme.SplashScreen">
         <item name="windowSplashScreenBackground">@color/black</item>
-        <item name="windowSplashScreenAnimatedIcon">@drawable/logo</item>
+        <item name="windowSplashScreenAnimatedIcon">@drawable/logogod</item>
         <item name="postSplashScreenTheme">@style/Theme.StudyApp</item>
         <item name="android:windowNoTitle">true</item>
         <item name="android:windowActionBar">false</item>
