@@ -40,9 +40,14 @@ fun UsernameField(
                 focusManager.moveFocus(FocusDirection.Down)
             }
         ),
-        label = { Text(text = "Name")},
-        placeholder = { Text(text = "Write your name")},
-        leadingIcon = { Icon(imageVector = Icons.Default.Person, contentDescription = "User icon") },
+        label = { Text(text = "Name") },
+        placeholder = { Text(text = "Write your name") },
+        leadingIcon = {
+            Icon(
+                imageVector = Icons.Default.Person,
+                contentDescription = "User icon"
+            )
+        },
         modifier = modifier
     )
 }
