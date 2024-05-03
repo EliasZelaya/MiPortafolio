@@ -1,8 +1,12 @@
 package com.elias.study_app.viewmodel
 
+import android.annotation.SuppressLint
+import android.util.Log
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Visibility
 import androidx.compose.material.icons.filled.VisibilityOff
+import androidx.compose.runtime.MutableState
+import androidx.compose.runtime.mutableStateOf
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.text.input.PasswordVisualTransformation
 import androidx.compose.ui.text.input.VisualTransformation
@@ -13,6 +17,7 @@ import androidx.lifecycle.viewModelScope
 import com.elias.study_app.data.UserDataLogin
 import com.elias.study_app.data.usersDataList
 import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 
@@ -36,7 +41,8 @@ class LoginScreenViewModel : ViewModel() {
     private val _enable = MutableLiveData<Boolean>()
     val enable: LiveData<Boolean> = _enable
 
-    private val _changeActivity = MutableLiveData<Boolean>()
+    private val _changeActivity = MutableLiveData<Boolean?>()
+    val changeActivity: LiveData<Boolean?> = _changeActivity
 
     fun onLoginField(name: String, password: String) {
         _username.value = name
@@ -47,23 +53,25 @@ class LoginScreenViewModel : ViewModel() {
 
     private val searchUsername: List<UserDataLogin> = usersDataList()
 
-    fun loginState(): Boolean {
-        _changeActivity.value = false
-//        viewModelScope.launch(Dispatchers.Main) {
+    @SuppressLint("SuspiciousIndentation")
+    fun loginState() {
+        _changeActivity.value = null
+        viewModelScope.launch(Dispatchers.IO) {
+            val valid = mutableStateOf(false)
             try {
                 searchUsername.forEach {
                     if (it.username == _username.value && it.password == _password.value) {
-//                        withContext(Dispatchers.Main) {
-                            _changeActivity.value = true
-//                        }
+                        _changeActivity.postValue(true)
+                        valid.value = true
+                        Log.d("Errores", "Cuando entre era: ${_changeActivity.value}")
                         return@forEach
                     }
                 }
+                if(!valid.value) _changeActivity.postValue(false)
             } catch (e: Exception) {
+                Log.d("Errores", "$e")
             }
-//        }
-
-        return _changeActivity.value!!
+        }
     }
 
 

@@ -15,7 +15,9 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 
 @Composable
-fun InfoStudyTime() {
+fun InfoStudyTime(
+    text: String
+) {
     OutlinedCard(
         modifier = Modifier
             .height(75.dp)
@@ -29,7 +31,7 @@ fun InfoStudyTime() {
             horizontalAlignment = Alignment.CenterHorizontally,
             verticalArrangement = Arrangement.Center
         ) {
-            Text("Subjects", modifier = Modifier.padding(6.dp))
+            Text(text, modifier = Modifier.padding(6.dp))
             Text("10")
         }
     }
@@ -38,5 +40,5 @@ fun InfoStudyTime() {
 @Preview(showSystemUi = true)
 @Composable
 private fun InfoStudyPreview() {
-    InfoStudyTime()
+    InfoStudyTime("Subject")
 }
