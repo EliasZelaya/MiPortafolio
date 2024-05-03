@@ -43,21 +43,17 @@ class LoginScreenViewModel : ViewModel() {
     private val _enable = MutableLiveData<Boolean>()
     val enable: LiveData<Boolean> = _enable
 
-    fun checkLogin(context: Context, activity: Class <*>) {
-        viewModelScope.launch {
-            if (checkPassword(_password.value) && _username.value == "bomdia") {
-                context.startActivity(Intent(context, activity))
-                (context as Activity).finish()
-            }
-        }
-    }
-
     fun onLoginField(name: String, password: String) {
         _username.value = name
         _password.value = password
 
         _enable.value = checkPassword(_password.value) && checkUsername(_username.value)
     }
+
+    fun loginState(): Boolean {
+        return if()
+    }
+
 
     private fun checkPassword(password: String?): Boolean = (password?.length ?: 0) > 4
     private fun checkUsername(username: String?): Boolean = username != null
