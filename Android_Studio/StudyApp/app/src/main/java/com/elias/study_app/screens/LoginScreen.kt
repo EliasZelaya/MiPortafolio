@@ -23,11 +23,13 @@ import com.elias.study_app.R
 import com.elias.study_app.components.logincomponents.ButtonLogin
 import com.elias.study_app.components.logincomponents.PasswordField
 import com.elias.study_app.components.logincomponents.UsernameField
+import com.elias.study_app.navigation.NavBarGraph
 import com.elias.study_app.ui.theme.StudyAppTheme
 import com.elias.study_app.viewmodel.LoginScreenViewModel
 
 
-class LoginScreen : ComponentActivity() {
+class LoginScreen() : ComponentActivity() {
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
@@ -37,40 +39,7 @@ class LoginScreen : ComponentActivity() {
                     modifier = Modifier.fillMaxSize(),
                     color = MaterialTheme.colorScheme.background
                 ) {
-                    val viewmodel: LoginScreenViewModel = viewModel()
-
-                    Column(
-                        modifier = Modifier
-                            .fillMaxSize()
-                            .padding(8.dp)
-                            .verticalScroll(rememberScrollState()),
-                        verticalArrangement = Arrangement.Center,
-                        horizontalAlignment = Alignment.CenterHorizontally
-                    ) {
-                        Image(
-                            painter = painterResource(id = R.drawable.logogod),
-                            contentDescription = "Logo of calendar",
-                            modifier = Modifier.size(200.dp)
-                        )
-
-                        UsernameField(
-                            Modifier
-                                .width(300.dp)
-                                .padding(8.dp), viewmodel
-                        )
-                        PasswordField(
-                            Modifier
-                                .width(300.dp)
-                                .padding(8.dp), viewmodel
-                        )
-
-                        ButtonLogin(
-                            Modifier
-                                .width(300.dp)
-                                .padding(8.dp),
-                            viewmodel
-                        )
-                    }
+                    NavBarGraph()
                 }
             }
         }
