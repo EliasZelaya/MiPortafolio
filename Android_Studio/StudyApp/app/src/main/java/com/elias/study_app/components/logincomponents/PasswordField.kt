@@ -9,6 +9,7 @@ import androidx.compose.material3.Icon
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextField
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.livedata.observeAsState
 import androidx.compose.ui.Modifier
@@ -22,39 +23,42 @@ fun PasswordField(
     modifier: Modifier,
     viewmodel: LoginScreenViewModel
 ) {
-    val username by viewmodel.username.observeAsState("")
-    val password by viewmodel.password.observeAsState("")
+    /*val username by viewmodel.username.observeAsState("")
+    val password by viewmodel.password.observeAsState("")*/
+    val userData by viewmodel.userData.collectAsState()
     val checkVisibility by viewmodel.checkVisibility.observeAsState(false)
     val Icon by viewmodel.visibility.observeAsState(Icons.Default.VisibilityOff)
     val visualTransformation by viewmodel.passwordKey.observeAsState(PasswordVisualTransformation())
 
-    TextField(
-        value = password,
-        onValueChange = {
-            viewmodel.onLoginField(username, it)
-        },
-        label = { Text(text = "Password") },
-        placeholder = { Text(text = "Write your password") },
-        maxLines = 1,
-        singleLine = true,
-        keyboardOptions = KeyboardOptions(
-            imeAction = ImeAction.Done,
-            keyboardType = KeyboardType.Password
-        ),
-        visualTransformation = visualTransformation,
-        leadingIcon = {
-            Icon(
-                imageVector = Icons.Default.Key,
-                contentDescription = "User password icon"
-            )
-        },
-        trailingIcon = {
-            Icon(
-                imageVector = Icon,
-                contentDescription = "Visibility password",
-                modifier = Modifier.clickable { viewmodel.passVisibility(checkVisibility) }
-            )
-        },
-        modifier = modifier
-    )
+    userData.forEach { item ->
+        TextField(
+            value = item.password,
+            onValueChange = {
+                viewmodel.onLoginField(item.username, it)
+            },
+            label = { Text(text = "Password") },
+            placeholder = { Text(text = "Write your password") },
+            maxLines = 1,
+            singleLine = true,
+            keyboardOptions = KeyboardOptions(
+                imeAction = ImeAction.Done,
+                keyboardType = KeyboardType.Password
+            ),
+            visualTransformation = visualTransformation,
+            leadingIcon = {
+                Icon(
+                    imageVector = Icons.Default.Key,
+                    contentDescription = "User password icon"
+                )
+            },
+            trailingIcon = {
+                Icon(
+                    imageVector = Icon,
+                    contentDescription = "Visibility password",
+                    modifier = Modifier.clickable { viewmodel.passVisibility(checkVisibility) }
+                )
+            },
+            modifier = modifier
+        )
+    }
 }

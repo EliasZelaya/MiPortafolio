@@ -18,16 +18,17 @@ import com.elias.study_app.data.UserDataLogin
 import com.elias.study_app.data.usersDataList
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.MutableStateFlow
+import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 
 @Suppress("UNREACHABLE_CODE")
 class LoginScreenViewModel : ViewModel() {
-    private val _username = MutableLiveData<String>()
-    val username: LiveData<String> = _username
+    private val _userData = MutableStateFlow<List<UserDataLogin>>(emptyList())
+    val userData = _userData.asStateFlow()
 
-    private val _password = MutableLiveData<String>()
-    val password: LiveData<String> = _password
+    /*private val _password = MutableLiveData<String>()
+    val password: LiveData<String> = _password*/
 
     private val _visibility = MutableLiveData<ImageVector>()
     val visibility: LiveData<ImageVector> = _visibility
@@ -38,22 +39,25 @@ class LoginScreenViewModel : ViewModel() {
     private val _passwordKey = MutableLiveData<VisualTransformation>()
     val passwordKey: LiveData<VisualTransformation> = _passwordKey
 
-    private val _enable = MutableLiveData<Boolean>()
-    val enable: LiveData<Boolean> = _enable
+    private val _enable = MutableStateFlow<Boolean>(false)
+    val enable = _enable.asStateFlow()
 
-    private val _changeActivity = MutableLiveData<Boolean?>()
-    val changeActivity: LiveData<Boolean?> = _changeActivity
+    fun setEnable() {
+        _enable.value = !_enable.value
+    }
+    /*private val _changeActivity = MutableStateFlow<Boolean?>(false)
+    val changeActivity: MutableStateFlow<Boolean?> = _changeActivity*/
 
     fun onLoginField(name: String, password: String) {
-        _username.value = name
-        _password.value = password
-
-        _enable.value = checkPassword(_password.value) && checkUsername(_username.value)
+        _userData.value.forEach { item ->
+            item.username = name
+            item.password = password
+        }
     }
 
     private val searchUsername: List<UserDataLogin> = usersDataList()
 
-    @SuppressLint("SuspiciousIndentation")
+    /*@SuppressLint("SuspiciousIndentation")
     fun loginState() {
         _changeActivity.value = null
         viewModelScope.launch(Dispatchers.IO) {
@@ -72,7 +76,7 @@ class LoginScreenViewModel : ViewModel() {
                 Log.d("Errores", "$e")
             }
         }
-    }
+    }*/
 
 
     private fun checkPassword(password: String?): Boolean = (password?.length ?: 0) > 2
