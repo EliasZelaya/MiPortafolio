@@ -15,7 +15,9 @@ import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.RectangleShape
 import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.res.stringResource
 import com.elias.study_app.MainActivity
+import com.elias.study_app.R
 import com.elias.study_app.viewmodel.LoginScreenViewModel
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
@@ -39,7 +41,7 @@ fun ButtonLogin(
         modifier = modifier,
         shape = RectangleShape
     ) {
-        Text("Login")
+        Text(stringResource(R.string.login))
     }
     if (finished == true) {
         context.startActivities(arrayOf(Intent(context, MainActivity::class.java)))

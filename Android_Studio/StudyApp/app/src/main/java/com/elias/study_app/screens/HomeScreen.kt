@@ -11,20 +11,32 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.material3.Divider
+import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Text
+import androidx.compose.material3.rememberDatePickerState
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.livedata.observeAsState
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.lifecycle.viewmodel.compose.viewModel
 import com.elias.study_app.components.homecomponents.InfoStudyTime
 import com.elias.study_app.components.homecomponents.StudyToday
 import com.elias.study_app.components.homecomponents.SubjectsLabel
+import com.elias.study_app.viewmodel.NewActivityViewModel
 
+@OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun HomeScreen() {
+    val dateState = rememberDatePickerState()
+    val viewmodel: NewActivityViewModel = viewModel()
+    val showDialog by viewmodel.showDialog.observeAsState(false)
+
     LazyColumn(
         modifier = Modifier.fillMaxSize(),
         horizontalAlignment = Alignment.CenterHorizontally
@@ -67,12 +79,7 @@ fun HomeScreen() {
                         rememberScrollState()
                     )
             ) {
-                SubjectsLabel()
-                SubjectsLabel()
-                SubjectsLabel()
-                SubjectsLabel()
-                SubjectsLabel()
-                SubjectsLabel()
+                SubjectsLabel(viewmodel, /*LocalContext.current*/)
             }
 
             Box(
@@ -100,6 +107,9 @@ fun HomeScreen() {
                 StudyToday()
             }
         }
+    }
+    if (showDialog) {
+        NewActivityScreen(dateState = dateState, viewmodel = viewmodel)
     }
 }
 
