@@ -1,31 +1,29 @@
 package com.elias.study_app.viewmodel
 
-import android.annotation.SuppressLint
-import android.util.Log
+import android.service.autofill.UserData
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Visibility
 import androidx.compose.material.icons.filled.VisibilityOff
-import androidx.compose.runtime.MutableState
-import androidx.compose.runtime.mutableStateOf
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.text.input.PasswordVisualTransformation
 import androidx.compose.ui.text.input.VisualTransformation
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import androidx.lifecycle.viewModelScope
 import com.elias.study_app.data.UserDataLogin
 import com.elias.study_app.data.usersDataList
-import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
-import kotlinx.coroutines.launch
-import kotlinx.coroutines.withContext
 
-@Suppress("UNREACHABLE_CODE")
 class LoginScreenViewModel : ViewModel() {
     private val _userData = MutableStateFlow<List<UserDataLogin>>(emptyList())
     val userData = _userData.asStateFlow()
+
+    private val _username = MutableStateFlow("")
+    val username = _username
+
+    private val _password = MutableStateFlow("")
+    val password = _password
 
     /*private val _password = MutableLiveData<String>()
     val password: LiveData<String> = _password*/
@@ -48,11 +46,21 @@ class LoginScreenViewModel : ViewModel() {
     /*private val _changeActivity = MutableStateFlow<Boolean?>(false)
     val changeActivity: MutableStateFlow<Boolean?> = _changeActivity*/
 
-    fun onLoginField(name: String, password: String) {
-        _userData.value.forEach { item ->
-            item.username = name
-            item.password = password
+
+    fun onNameField(name: String) {
+        _username.value = name
+    }
+
+    fun onPassField(password: String) {
+        _password.value = password
+    }
+
+    fun checkFields() : Boolean{
+        usersDataList().forEach {
+            if (_username.value == it.username && _password.value == it.password)
+                return false
         }
+        return true
     }
 
     private val searchUsername: List<UserDataLogin> = usersDataList()

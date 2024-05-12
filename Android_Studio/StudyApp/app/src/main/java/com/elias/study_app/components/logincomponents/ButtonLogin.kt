@@ -1,30 +1,38 @@
+@file:Suppress("UNUSED_EXPRESSION")
+
 package com.elias.study_app.components.logincomponents
 
+import android.content.Context
 import androidx.compose.material3.Button
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.getValue
-import androidx.compose.runtime.livedata.observeAsState
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.RectangleShape
 import androidx.compose.ui.res.stringResource
 import com.elias.study_app.R
+import com.elias.study_app.util.ShowMessage
 import com.elias.study_app.viewmodel.LoginScreenViewModel
 
 @Composable
 fun ButtonLogin(
     modifier: Modifier,
     viewModel: LoginScreenViewModel,
+    context: Context,
     onButton: () -> Unit
 ) {
     /*val context = LocalContext.current
     val enable by viewModel.enable.observeAsState(false)
     val finished by viewModel.changeActivity.observeAsState(null)*/
 //    var enable by viewModel.enable.collectAsState(false)
-    val check by viewModel.checkVisibility.observeAsState(false)
+//    val check by viewModel.checkVisibility.observeAsState(false)
+
     Button(
         onClick = {
-
+            if (viewModel.checkFields()) {
+                onButton()
+            } else {
+                ShowMessage(context, 1)
+            }
         },
         enabled = true,
         modifier = modifier,
