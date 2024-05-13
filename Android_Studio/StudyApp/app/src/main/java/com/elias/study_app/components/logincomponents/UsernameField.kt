@@ -10,7 +10,6 @@ import androidx.compose.material3.TextField
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
-import androidx.compose.runtime.livedata.observeAsState
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.focus.FocusDirection
 import androidx.compose.ui.platform.LocalFocusManager
@@ -27,34 +26,31 @@ fun UsernameField(
     */
     val focusManager = LocalFocusManager.current
 
-    val userData by viewmodel.userData.collectAsState()
+    val username by viewmodel.username.collectAsState()
 
-    userData.forEach { item ->
-        TextField(
-            value = item.username ,
-            onValueChange = {
-                viewmodel.onLoginField(it, item.password)
-            },
-            maxLines = 1,
-            singleLine = true,
-            keyboardOptions = KeyboardOptions(
-                imeAction = ImeAction.Next
-            ),
-            keyboardActions = KeyboardActions(
-                onNext = {
-                    focusManager.moveFocus(FocusDirection.Down)
-                }
-            ),
-            label = { Text(text = "Name") },
-            placeholder = { Text(text = "Write your name") },
-            leadingIcon = {
-                Icon(
-                    imageVector = Icons.Default.Person,
-                    contentDescription = "User icon"
-                )
-            },
-            modifier = modifier
-        )
-
-    }
+    TextField(
+        value = username,
+        onValueChange = {
+            viewmodel.onNameField(it)
+        },
+        maxLines = 1,
+        singleLine = true,
+        keyboardOptions = KeyboardOptions(
+            imeAction = ImeAction.Next
+        ),
+        keyboardActions = KeyboardActions(
+            onNext = {
+                focusManager.moveFocus(FocusDirection.Down)
+            }
+        ),
+        label = { Text(text = "Name") },
+        placeholder = { Text(text = "Write your name") },
+        leadingIcon = {
+            Icon(
+                imageVector = Icons.Default.Person,
+                contentDescription = "User icon"
+            )
+        },
+        modifier = modifier
+    )
 }

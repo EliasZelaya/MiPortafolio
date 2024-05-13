@@ -25,40 +25,38 @@ fun PasswordField(
 ) {
     /*val username by viewmodel.username.observeAsState("")
     val password by viewmodel.password.observeAsState("")*/
-    val userData by viewmodel.userData.collectAsState()
+    val password by viewmodel.password.collectAsState()
     val checkVisibility by viewmodel.checkVisibility.observeAsState(false)
     val Icon by viewmodel.visibility.observeAsState(Icons.Default.VisibilityOff)
     val visualTransformation by viewmodel.passwordKey.observeAsState(PasswordVisualTransformation())
 
-    userData.forEach { item ->
-        TextField(
-            value = item.password,
-            onValueChange = {
-                viewmodel.onLoginField(item.username, it)
-            },
-            label = { Text(text = "Password") },
-            placeholder = { Text(text = "Write your password") },
-            maxLines = 1,
-            singleLine = true,
-            keyboardOptions = KeyboardOptions(
-                imeAction = ImeAction.Done,
-                keyboardType = KeyboardType.Password
-            ),
-            visualTransformation = visualTransformation,
-            leadingIcon = {
-                Icon(
-                    imageVector = Icons.Default.Key,
-                    contentDescription = "User password icon"
-                )
-            },
-            trailingIcon = {
-                Icon(
-                    imageVector = Icon,
-                    contentDescription = "Visibility password",
-                    modifier = Modifier.clickable { viewmodel.passVisibility(checkVisibility) }
-                )
-            },
-            modifier = modifier
-        )
-    }
+    TextField(
+        value = password,
+        onValueChange = {
+            viewmodel.onPassField(it)
+        },
+        label = { Text(text = "Password") },
+        placeholder = { Text(text = "Write your password") },
+        maxLines = 1,
+        singleLine = true,
+        keyboardOptions = KeyboardOptions(
+            imeAction = ImeAction.Done,
+            keyboardType = KeyboardType.Password
+        ),
+        visualTransformation = visualTransformation,
+        leadingIcon = {
+            Icon(
+                imageVector = Icons.Default.Key,
+                contentDescription = "User password icon"
+            )
+        },
+        trailingIcon = {
+            Icon(
+                imageVector = Icon,
+                contentDescription = "Visibility password",
+                modifier = Modifier.clickable { viewmodel.passVisibility(checkVisibility) }
+            )
+        },
+        modifier = modifier
+    )
 }
