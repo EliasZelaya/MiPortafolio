@@ -19,7 +19,7 @@ import androidx.compose.ui.unit.dp
 @Composable
 fun LabelDatePicker() {
     Card(
-        onClick = { /*TODO*/ },
+        onClick = {  },
         modifier = Modifier.height(60.dp),
         shape = RectangleShape
     ) {
