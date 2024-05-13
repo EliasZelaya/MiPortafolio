@@ -16,6 +16,9 @@ class NewActivityViewModel : ViewModel() {
     private val _checkDate = MutableStateFlow(false)
     val checkDate = _checkDate.asStateFlow()
 
+    private val _checkTime = MutableStateFlow(false)
+    val checkTime = _checkTime.asStateFlow()
+
     private val _selectDate = MutableStateFlow("...")
     val selectDate = _selectDate.asStateFlow()
 
@@ -36,9 +39,15 @@ class NewActivityViewModel : ViewModel() {
     fun setDate(date: String) {
         _selectDate.value = date
     }
+
     fun changeDateState() {
         _checkDate.value = !_checkDate.value
     }
+
+    fun changeTimeState() {
+        _checkTime.value = !_checkTime.value
+    }
+
     fun setTitle(title: String) {
         _title.value = title
     }
