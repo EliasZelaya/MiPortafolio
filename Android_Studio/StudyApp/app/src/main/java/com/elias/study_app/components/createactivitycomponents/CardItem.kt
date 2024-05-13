@@ -1,7 +1,4 @@
-package com.elias.study_app.components.activitycomponents
-
-import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.graphics.painter.Painter
+package com.elias.study_app.components.createactivitycomponents
 
 data class CardItem(
     var color: Int = 0,

@@ -1,4 +1,4 @@
-package com.elias.study_app.components.activitycomponents
+package com.elias.study_app.components.createactivitycomponents
 
 import android.annotation.SuppressLint
 import androidx.compose.material3.Button

@@ -23,7 +23,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.elias.study_app.R
-import com.elias.study_app.components.activitycomponents.CardItem
+import com.elias.study_app.components.createactivitycomponents.CardItem
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable

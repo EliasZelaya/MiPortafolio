@@ -15,9 +15,7 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.width
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.ArrowBack
-import androidx.compose.material.icons.filled.CalendarMonth
 import androidx.compose.material3.Button
-import androidx.compose.material3.Card
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
 import androidx.compose.material3.Scaffold
@@ -28,11 +26,9 @@ import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.RectangleShape
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import com.elias.study_app.components.activitycomponents.LabelColorPicker
-import com.elias.study_app.components.activitycomponents.LabelDatePicker
+import com.elias.study_app.components.createactivitycomponents.LabelColorPicker
 import com.elias.study_app.viewmodel.NewActivityViewModel
 
 
@@ -112,9 +108,7 @@ fun Content(
             .padding(innerpadding),
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
-        LabelDatePicker()
-        LabelColorPicker()
-
+        LabelColorPicker(viewmodel)
         Button(
             onClick = {
                 viewmodel.createCard()

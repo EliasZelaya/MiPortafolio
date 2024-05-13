@@ -1,4 +1,4 @@
-package com.elias.study_app.components.activitycomponents
+package com.elias.study_app.components.createactivitycomponents
 
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxSize
