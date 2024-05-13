@@ -8,7 +8,11 @@ import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Text
 import androidx.compose.material3.rememberDatePickerState
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.collectAsState
+import androidx.compose.runtime.getValue
 import com.elias.study_app.viewmodel.NewActivityViewModel
+import java.time.Instant
+import java.time.ZoneId
 
 @SuppressLint("StateFlowValueCalledInComposition")
 @OptIn(ExperimentalMaterial3Api::class)
@@ -16,9 +20,10 @@ import com.elias.study_app.viewmodel.NewActivityViewModel
 fun ShowDatePicker(
     viewmodel: NewActivityViewModel
 ) {
+    val check by viewmodel.checkDate.collectAsState()
     val dateState = rememberDatePickerState()
 
-    if (viewmodel.checkDate.value) {
+    if (check) {
         DatePickerDialog(
             onDismissRequest = {
                 viewmodel.changeDateState()
@@ -30,6 +35,12 @@ fun ShowDatePicker(
             }
         ) {
             DatePicker(state = dateState)
+        }
+        val date = dateState.selectedDateMillis
+        date?.let {
+            val localeDate = Instant.ofEpochMilli(it).atZone(ZoneId.of("UTC")).toLocalDate()
+
+            viewmodel.setDate("${localeDate.dayOfMonth} / ${localeDate.monthValue} / ${localeDate.year}")
         }
     }
 }

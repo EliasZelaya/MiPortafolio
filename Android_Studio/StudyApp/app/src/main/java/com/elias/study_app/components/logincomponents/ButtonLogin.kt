@@ -10,7 +10,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.RectangleShape
 import androidx.compose.ui.res.stringResource
 import com.elias.study_app.R
-import com.elias.study_app.util.ShowMessage
+import com.elias.study_app.util.showMessage
 import com.elias.study_app.viewmodel.LoginScreenViewModel
 
 @Composable
@@ -31,7 +31,7 @@ fun ButtonLogin(
             if (viewModel.checkFields()) {
                 onButton()
             } else {
-                ShowMessage(context, 1)
+                showMessage(context, 1)
             }
         },
         enabled = true,

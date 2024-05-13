@@ -16,6 +16,9 @@ class NewActivityViewModel : ViewModel() {
     private val _checkDate = MutableStateFlow(false)
     val checkDate = _checkDate.asStateFlow()
 
+    private val _selectDate = MutableStateFlow("...")
+    val selectDate = _selectDate.asStateFlow()
+
     private val _colorName = MutableStateFlow("...")
     val colorName = _colorName.asStateFlow()
 
@@ -30,6 +33,9 @@ class NewActivityViewModel : ViewModel() {
         _colorName.value = name
     }
 
+    fun setDate(date: String) {
+        _selectDate.value = date
+    }
     fun changeDateState() {
         _checkDate.value = !_checkDate.value
     }
@@ -50,5 +56,6 @@ class NewActivityViewModel : ViewModel() {
         newList.add(cardItem)
         _itemList.value = newList
         _title.value = ""
+        _colorName.value = "..."
     }
 }

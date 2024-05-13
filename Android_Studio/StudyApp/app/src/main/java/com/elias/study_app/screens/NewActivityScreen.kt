@@ -4,6 +4,7 @@ package com.elias.study_app.screens
 
 import android.annotation.SuppressLint
 import androidx.compose.foundation.clickable
+import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
@@ -26,9 +27,12 @@ import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.elias.study_app.components.createactivitycomponents.LabelColorPicker
+import com.elias.study_app.components.createactivitycomponents.LabelDatePicker
+import com.elias.study_app.util.showMessage
 import com.elias.study_app.viewmodel.NewActivityViewModel
 
 
@@ -67,7 +71,7 @@ fun TopBar(
     val title by viewmodel.title.collectAsState()
 
     Row(
-        modifier = modifier
+        modifier = modifier,
     ) {
         Box(
             modifier = Modifier
@@ -95,24 +99,32 @@ fun TopBar(
     }
 }
 
-@OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun Content(
     innerpadding: PaddingValues,
     viewmodel: NewActivityViewModel,
     onClick: () -> Unit
 ) {
+    val context = LocalContext.current
     Column(
         modifier = Modifier
             .fillMaxWidth()
             .padding(innerpadding),
-        horizontalAlignment = Alignment.CenterHorizontally
+        horizontalAlignment = Alignment.CenterHorizontally,
+        verticalArrangement = Arrangement.spacedBy(12.dp)
     ) {
         LabelColorPicker(viewmodel)
+        LabelDatePicker(viewmodel)
+
         Button(
             onClick = {
-                viewmodel.createCard()
-                onClick()
+                if(viewmodel.title.value.isEmpty()) {
+                    showMessage(context, 2)
+                }
+                else {
+                    viewmodel.createCard()
+                    onClick()
+                }
             },
             modifier = Modifier
                 .padding(12.dp)
