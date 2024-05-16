@@ -38,7 +38,7 @@ fun NavBarGraph(
 
             composable(MainScreen.CreateTask.route) {
                 NewActivityScreen(viewModel) {
-                    navController.navigate(MainScreen.Main.route)
+                    navController.popBackStack()
                 }
             }
         }

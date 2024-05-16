@@ -45,7 +45,7 @@ fun Screens() {
 
     fun titleRoute(currentRout: String?): String {
         return when (currentRout) {
-            ScreenRoute.Chats.route -> "WhatsApp"
+            ScreenRoute.Home.route -> "WhatsApp"
             ScreenRoute.Status.route -> "News"
             ScreenRoute.Community.route -> "Community"
             ScreenRoute.Calls.route -> "Calls"

@@ -19,32 +19,31 @@ import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.RectangleShape
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.elias.study_app.viewmodel.NewActivityViewModel
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun LabelTimePicker(
+fun LabelTimePickerLimit(
     viewModel: NewActivityViewModel
-) {
+    ) {
     Card(
-        onClick = { viewModel.changeTimeState() },
+        onClick = { viewModel.changeTimeStateLimit() },
         modifier = Modifier.height(60.dp),
         shape = RectangleShape
     ) {
-        val selectTime by viewModel.selectTime.collectAsState()
+        val selectTime by viewModel.selectTimeLimit.collectAsState()
         Row(
             modifier = Modifier
                 .fillMaxSize()
-                .clickable { viewModel.changeTimeState() },
+                .clickable { viewModel.changeTimeStateLimit() },
             verticalAlignment = Alignment.CenterVertically,
             horizontalArrangement = Arrangement.spacedBy(12.dp)
         ) {
             Spacer(modifier = Modifier.padding(start = 2.dp))
             Icon(
                 imageVector = Icons.Default.AccessTime,
-                contentDescription = "Set Time",
+                contentDescription = "Set Time Limit",
             )
             /*OutlinedTextField(
                 readOnly = true,
@@ -62,15 +61,9 @@ fun LabelTimePicker(
         }
 
 
-        val check by viewModel.checkTime.collectAsState()
+        val check by viewModel.checkTimeLimit.collectAsState()
         if(check) {
             ShowTimePicker(viewModel)
         }
     }
-}
-
-@Preview(showSystemUi = true)
-@Composable
-private fun MyPreview() {
-    LabelTimePicker(NewActivityViewModel())
 }

@@ -17,7 +17,6 @@ import androidx.compose.foundation.layout.width
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.ArrowBack
 import androidx.compose.material3.Button
-import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
@@ -32,6 +31,9 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.elias.study_app.components.createactivitycomponents.LabelColorPicker
 import com.elias.study_app.components.createactivitycomponents.LabelDatePicker
+import com.elias.study_app.components.createactivitycomponents.LabelTimePicker
+import com.elias.study_app.components.createactivitycomponents.LabelTimePickerLimit
+import com.elias.study_app.ui.theme.StudyAppTheme
 import com.elias.study_app.util.showMessage
 import com.elias.study_app.viewmodel.NewActivityViewModel
 
@@ -41,22 +43,24 @@ fun NewActivityScreen(
     viewModel: NewActivityViewModel,
     onClickBack: () -> Unit
 ) {
-    Column(
-        modifier = Modifier.fillMaxSize()
-    ) {
-        Scaffold(
-            topBar = {
-                TopBar(
-                    modifier = Modifier
-                        .fillMaxWidth()
-                        .height(75.dp),
-                    viewModel,
-                    onClickBack
-                )
+    StudyAppTheme {
+        Column(
+            modifier = Modifier.fillMaxSize()
+        ) {
+            Scaffold(
+                topBar = {
+                    TopBar(
+                        modifier = Modifier
+                            .fillMaxWidth()
+                            .height(75.dp),
+                        viewModel,
+                        onClickBack
+                    )
+                }
+            )
+            { it ->
+                Content(innerpadding = it, viewModel, onClickBack)
             }
-        )
-        { it ->
-            Content(innerpadding = it, viewModel, onClickBack)
         }
     }
 }
@@ -114,15 +118,24 @@ fun Content(
     ) {
         LabelColorPicker(viewmodel)
         LabelDatePicker(viewmodel)
+        LabelTimePicker(viewmodel)
+        LabelTimePickerLimit(viewmodel)
 
         Button(
             onClick = {
-                if(viewmodel.title.value.isEmpty()) {
-                    showMessage(context, 2)
-                }
-                else {
-                    viewmodel.createCard()
-                    onClick()
+                when {
+                    viewmodel.title.value.isEmpty() -> {
+                        showMessage(context, 2)
+                    }
+
+                    viewmodel.selectColor.value == 0 -> {
+                        showMessage(context, 3)
+                    }
+
+                    else -> {
+                        viewmodel.createCard()
+                        onClick()
+                    }
                 }
             },
             modifier = Modifier
