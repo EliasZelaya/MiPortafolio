@@ -69,7 +69,6 @@ fun TopBar(
     onClick: () -> Unit
 ) {
     val title by viewmodel.title.collectAsState()
-
     Row(
         modifier = modifier,
     ) {
