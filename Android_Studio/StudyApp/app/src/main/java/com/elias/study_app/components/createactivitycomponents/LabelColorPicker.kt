@@ -54,8 +54,6 @@ fun LabelColorPicker(
                     ExposedDropdownMenuDefaults.TrailingIcon(expanded = expand)
                 },
                 colors = OutlinedTextFieldDefaults.colors(
-                    unfocusedTextColor = Color.White,
-                    focusedTextColor = Color.White
                 ),
                 modifier = Modifier
                     .menuAnchor()

@@ -1,12 +1,14 @@
 package com.elias.study_app.components.createactivitycomponents
 
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.CalendarMonth
+import androidx.compose.material.icons.filled.AccessTime
 import androidx.compose.material3.Card
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
@@ -17,6 +19,7 @@ import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.RectangleShape
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.elias.study_app.viewmodel.NewActivityViewModel
 
@@ -26,26 +29,48 @@ fun LabelTimePicker(
     viewModel: NewActivityViewModel
 ) {
     Card(
-        onClick = { viewModel.changeDateState() },
+        onClick = { viewModel.changeTimeState() },
         modifier = Modifier.height(60.dp),
         shape = RectangleShape
     ) {
-
+        val selectTime by viewModel.selectTime.collectAsState()
         Row(
             modifier = Modifier
                 .fillMaxSize()
-                .padding(8.dp),
+                .clickable { viewModel.changeTimeState() },
             verticalAlignment = Alignment.CenterVertically,
             horizontalArrangement = Arrangement.spacedBy(12.dp)
         ) {
-            val selectDate by viewModel.selectDate.collectAsState()
-
+            Spacer(modifier = Modifier.padding(start = 2.dp))
             Icon(
-                imageVector = Icons.Default.CalendarMonth,
-                contentDescription = "Set Date",
+                imageVector = Icons.Default.AccessTime,
+                contentDescription = "Set Time",
             )
+            /*OutlinedTextField(
+                readOnly = true,
+                value = selectTime,
+                onValueChange = {},
+                label = {
+                    Text("Time start")
+                },
+                modifier = Modifier
+                    .fillMaxSize()
+                    .padding(2.dp)
+                    .clickable { viewModel.changeTimeState() }
+            )*/
+            Text(selectTime)
+        }
 
-            Text(selectDate)
+
+        val check by viewModel.checkTime.collectAsState()
+        if(check) {
+            ShowTimePicker(viewModel)
         }
     }
+}
+
+@Preview(showSystemUi = true)
+@Composable
+private fun MyPreview() {
+    LabelTimePicker(NewActivityViewModel())
 }
