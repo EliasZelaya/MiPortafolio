@@ -24,9 +24,9 @@ import com.elias.study_app.viewmodel.LoginScreenViewModel
 
 @Composable
 fun LogScreen(
+    viewmodel: LoginScreenViewModel,
     onButtonLogin: () -> Unit
 ) {
-    val viewmodel: LoginScreenViewModel = viewModel()
     val context = LocalContext.current
 
     Column(

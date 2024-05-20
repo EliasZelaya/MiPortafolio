@@ -25,8 +25,7 @@ class LoginScreen() : ComponentActivity() {
                     modifier = Modifier.fillMaxSize(),
                     color = MaterialTheme.colorScheme.background
                 ) {
-                    val viewModel : NewActivityViewModel = viewModel()
-                    NavBarGraph(viewModel)
+                    NavBarGraph()
                 }
             }
         }

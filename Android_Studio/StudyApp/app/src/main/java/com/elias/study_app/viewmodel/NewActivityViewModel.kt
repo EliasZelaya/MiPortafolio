@@ -14,6 +14,9 @@ class NewActivityViewModel : ViewModel() {
     private val _title = MutableStateFlow("")
     val title = _title.asStateFlow()
 
+    private val _description = MutableStateFlow("")
+    val description = _description.asStateFlow()
+
     private val _checkDate = MutableStateFlow(false)
     val checkDate = _checkDate.asStateFlow()
 
@@ -61,11 +64,6 @@ class NewActivityViewModel : ViewModel() {
         Log.d("Log", "Time:${time}, selected ${selectTime.value}")
     }
 
-    /*fun setTimeLimit(time: String) {
-        _selectTimeLimit.value = time
-//        Log.d("Log", "Time:${time}, selected ${selectTime.value}")
-    }*/
-
     fun changeDateState() {
         _checkDate.value = !_checkDate.value
     }
@@ -80,6 +78,9 @@ class NewActivityViewModel : ViewModel() {
 
     fun setTitle(title: String) {
         _title.value = title
+    }
+    fun setDescription(description: String) {
+        _description.value = description
     }
 
     fun changeExpand() {
@@ -97,8 +98,10 @@ class NewActivityViewModel : ViewModel() {
         newList.add(cardItem)
         _itemList.value = newList
         _title.value = ""
+        _description.value = ""
         _colorName.value = "..."
         _selectColor.value = 0
+        _selectDate.value = "..."
         _selectTime.value = "..."
         _selectTimeLimit.value = "..."
     }

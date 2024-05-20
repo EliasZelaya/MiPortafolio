@@ -33,6 +33,7 @@ import com.elias.study_app.components.createactivitycomponents.LabelColorPicker
 import com.elias.study_app.components.createactivitycomponents.LabelDatePicker
 import com.elias.study_app.components.createactivitycomponents.LabelTimePicker
 import com.elias.study_app.components.createactivitycomponents.LabelTimePickerLimit
+import com.elias.study_app.components.createactivitycomponents.TextFieldDescription
 import com.elias.study_app.ui.theme.StudyAppTheme
 import com.elias.study_app.util.showMessage
 import com.elias.study_app.viewmodel.NewActivityViewModel
@@ -116,6 +117,7 @@ fun Content(
         horizontalAlignment = Alignment.CenterHorizontally,
         verticalArrangement = Arrangement.spacedBy(12.dp)
     ) {
+        TextFieldDescription(viewmodel)
         LabelColorPicker(viewmodel)
         LabelDatePicker(viewmodel)
         LabelTimePicker(viewmodel)
