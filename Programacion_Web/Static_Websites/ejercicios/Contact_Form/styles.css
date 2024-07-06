@@ -1,0 +1,58 @@
+body {
+    font-family: sans-serif;
+    color: #eeee;
+    background: #111;
+}
+
+h2 {
+    margin: auto;
+    text-align: center;
+    font-size: 50px;
+    padding-bottom: 2%;
+    text-shadow: 0 0 10px rgb(197, 192, 114);
+}
+
+form {
+    padding: 3%;
+    margin: auto;
+    width:  50%;
+    height: 50%;
+    background: #222;
+    box-shadow: 0 0 10px #000;
+    margin-top: 10%;
+    margin-bottom: 10%;
+    box-shadow: 0 0 40px #444;
+}
+
+input, textarea, select {
+    color: aliceblue;
+    border: 1px solid #666;
+    box-sizing: border-box;
+    font-size: 18px;
+    padding: 2%;
+    width: 100%;
+    margin: auto;
+    line-height: 140%;
+    background: transparent;
+    font-family: sans-serif;
+}
+
+option {
+    background-color: #222;
+}
+
+textarea {
+    min-width: 100%;
+    min-height: 102px;
+    resize: none;
+}
+
+.form_input {
+    padding: 20px 0;
+}
+
+label {
+    font-weight: bold;
+    font-size: 1.4em;
+    line-height: 2;
+}

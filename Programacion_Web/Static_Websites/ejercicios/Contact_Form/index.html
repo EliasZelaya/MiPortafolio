@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="card">
+        <form>
+            <div class="form_title">
+                <h2>Formulario de contacto  </h2>
+            </div>
+            <div class="form_input">
+                <label for="name_input">Nombre</label>
+                <input type="text" id="name_input" placeholder="John Doe">
+            </div>
+            <div class="form_input">
+                <label for="email_input">Email</label>
+                <input type="email" id="email_input" placeholder="ejemplo@gmail.com">
+            </div>
+            <div class="form_input">
+                <label for="social-media">Red Social Mas Utilizada</label>
+                <select name="most-used-social" id="social-media">
+                    <option value="network1">Gmail</option>
+                    <option value="network2">Discord</option>
+                    <option value="network3">Instagram</option>
+                    <option value="network4">Facebook</option>
+                </select>
+            </div>
+            <div class="form_input">
+                <label for="type-of-user">Tipo de usuario</label>
+                <input list="type-of-user" name="type-of-user">
+                <datalist id="type-of-user" name="user">
+                    <option value="Usuario">Usuario de la aplicacion</option>
+                    <option value="Administrador">Encargado de la aplicacion</option>
+                    <option value="Empresa">Empresa que trabaja junto a la aplicacion</option>
+                </datalist>
+            </div>
+            <div class="form_input">
+                <label for="description_input">Mensaje</label>
+                <textarea rows="10" id="description_input" placeholder="Deja tu mensaje..."></textarea>
+            </div>
+        </form>
+    </div>
+</body>
+</html>
