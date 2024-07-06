@@ -1,0 +1,40 @@
+body {
+    font-family: sans-serif;
+    color: #eeee;
+    background: #111;
+}
+
+form {
+    padding: 3%;
+    margin: auto;
+    width:  50%;
+    height: 50%;
+    background: #222;
+    box-shadow: 0 0 10px #000;
+    margin-top: 10%;
+    margin-bottom: 10%;
+    box-shadow: 0 0 40px #444;
+}
+
+input, textarea, select {
+    color: aliceblue;
+    border: 1px solid #666;
+    box-sizing: border-box;
+    font-size: 18px;
+    padding: 2%;
+    width: 100%;
+    margin: auto;
+    line-height: 140%;
+    background: transparent;
+    font-family: sans-serif;
+}
+
+fieldset {
+    margin: 30px 0;
+    border: 1px solid #ddd6;
+    border-radius: 5px;
+}
+
+legend {
+    padding: 0 6px;
+}
