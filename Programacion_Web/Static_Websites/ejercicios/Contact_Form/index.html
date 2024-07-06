@@ -10,16 +10,23 @@
     <div class="card">
         <form>
             <div class="form_title">
-                <h2>Formulario de contacto  </h2>
+                <h2>Formulario de contacto</h2>
             </div>
-            <div class="form_input">
-                <label for="name_input">Nombre</label>
-                <input type="text" id="name_input" placeholder="John Doe">
-            </div>
-            <div class="form_input">
-                <label for="email_input">Email</label>
-                <input type="email" id="email_input" placeholder="ejemplo@gmail.com">
-            </div>
+            <fieldset>
+                <legend>INFORMACION BASICA</legend>
+                <div class="form_input">
+                    <label for="name_input">Nombre</label>
+                    <input type="text" id="name_input" placeholder="John Doe">
+                </div>
+                <div class="form_input">
+                    <label for="email_input">Email</label>
+                    <input type="email" id="email_input" placeholder="ejemplo@gmail.com">
+                </div>
+                <div class="form_input">
+                    <label for="">Asunto</label>
+                    <input type="text" placeholder="Asunto de tu mensaje">
+                </div>
+            </fieldset>
             <div class="form_input">
                 <label for="social-media">Red Social Mas Utilizada</label>
                 <select name="most-used-social" id="social-media">

@@ -1,4 +1,5 @@
 body {
+    margin: 0;
     font-family: sans-serif;
     color: #eeee;
     background: #111;
@@ -7,16 +8,14 @@ body {
 h2 {
     margin: auto;
     text-align: center;
-    font-size: 50px;
-    padding-bottom: 2%;
+    font-size: 200%;
     text-shadow: 0 0 10px rgb(197, 192, 114);
 }
 
 form {
     padding: 3%;
     margin: auto;
-    width:  50%;
-    height: 50%;
+    max-width: 500px;
     background: #222;
     box-shadow: 0 0 10px #000;
     margin-top: 10%;
@@ -48,11 +47,23 @@ textarea {
 }
 
 .form_input {
-    padding: 20px 0;
+    padding: 10% 0;
 }
 
 label {
     font-weight: bold;
     font-size: 1.4em;
     line-height: 2;
+}
+
+fieldset {
+    margin: 15% 0;
+    border: 1px solid #777;
+    border-radius: 6px;
+    padding: 15%;
+}
+
+legend {
+    color: #888;
+    padding: 0 2%;
 }
