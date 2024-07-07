@@ -1,0 +1,24 @@
+section .elemento1, 
+section .elemento2,
+section .elemento3 {
+    color: #f00;
+}
+
+/*AGRUPA ELEMENTOS QUE ESTEN DENTRO DEL PARENTESIS*/
+section :is(.elemento1, .elemento2, .elemento3) {
+    color: #00f;
+}
+
+/*FUNCIONA IGUAL QUE ID SOLO QUE TIENE MENOS ESPECIFICIDAD*/
+section :where {
+    color: #0ff;
+}
+
+/*SELECCIONA AL ELEMENTO QUE TENGA LA CLASE, ATRIBUTO, ETC QUE ESTE DENTRO DEL PARENTESIS, SI NO LO TIENE NO SE LE APLICA NINGUNA DE LAS PROPIEDADES*/
+section :has(.elemento1) {
+    background-color: #0ff;
+}
+
+section:has(+div) {
+    background-color: #0ff;
+}
