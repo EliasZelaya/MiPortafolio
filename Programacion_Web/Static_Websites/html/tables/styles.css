@@ -1,0 +1,10 @@
+td, th {
+    font-family: sans-serif;
+    padding: 1.5%;
+    text-align: center;
+    border: 1px solid #000;
+}
+
+table {
+    width: 100%;
+}
