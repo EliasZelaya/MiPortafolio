@@ -1,0 +1,29 @@
+/*SELECTO POR ATRIBUTO*/
+img[src^="../"] {
+    width: 100%;
+}
+
+/*SELECTOR DESCENDIENTE*/
+ul li {
+    color: #666;
+}
+
+/*SELECTOR POR HIJO DIRECTO*/
+li > em {
+    color: #f00;
+}
+
+/*SELECTOR DE HERMANO ADYACENTE*/
+h1 + p {
+    color: #00f;
+}
+
+/*SELECTOR DE HERMANOS GENERALES*/
+h1 ~ p {
+    color: #00f;
+}
+
+/*SELECTOR MULTIPLE*/
+h1, p {
+    color: #624;
+}
