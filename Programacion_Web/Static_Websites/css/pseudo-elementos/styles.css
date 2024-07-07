@@ -1,0 +1,41 @@
+div {
+    padding: 20px
+}
+
+h1::first-letter {
+    color: #f00;
+}
+
+div::first-line {
+    color: #f00;
+}
+
+/*SELECCIONA EL TEXTO QUE A SIDO SELECCIONADO CON EL CURSOR*/
+div::selection {
+    background-color: #f00;
+    color: #fff;
+}
+
+/*MODIFICA LOS PLACEHOLDERS*/
+input::placeholder {
+    color: #2cd;
+}
+
+/*MODIFICA LOS MARCADORES DE UNA LISTA*/
+li::marker {
+    color: #2fc;
+}
+
+/*COLOCA CONTENIDO ANTES DEL ELEMENTOS QUE SE ESTE SELECCIONANDO CON EL SELECTOR*/
+li::before {
+    content: 'texto antes';
+    padding: 10px;
+    color: #f00;
+}
+
+/*COLOCA CONTENIDO DESPUES DEL ELEMENTOS QUE SE ESTE SELECCIONANDO CON EL SELECTOR*/
+li::after {
+    content: 'texto despues';
+    padding: 10px;
+    color: #f00;
+}
