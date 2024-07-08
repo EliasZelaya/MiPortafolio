@@ -1,0 +1,19 @@
+body {
+    margin: 0;
+    background-color: #ededed;
+}
+
+.box {
+    width: 100px;
+    height: 100px;
+    background-color: #ffa500;
+    color: #fff;
+    position: relative;
+    z-index: 10;
+}
+
+.box--blue {
+    background-color: #00f;
+    top: 50px;
+    z-index: 20;
+}
