@@ -1,0 +1,20 @@
+body {
+    margin: 0;
+    font-family: sans-serif;
+    height: 100vh;
+    background-color: #ccc;
+}
+
+.box {
+    width: 220px;
+    height: 220px;
+    background-color: #fff;
+    margin-top: 50px;
+    transition: left 1s cubic-bezier(.87,.3,.49,1);
+    position: relative;
+    left: 0;
+    border: 2px solid #0009;
+    margin: auto;
+    margin-top: 50px;
+    overflow: auto;
+}
