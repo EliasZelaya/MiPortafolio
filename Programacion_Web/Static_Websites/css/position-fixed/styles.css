@@ -1,0 +1,40 @@
+body {
+    margin: 0;
+    font-family: sans-serif;
+}
+
+.box {
+    height: 60px;
+    width: 200px;
+    background-color: #fff;
+    position: fixed;
+    right: 0;
+    border: 1px solid #000;
+    box-shadow: 0 0 40px #0009;
+    border-right: 0;
+    padding: 5px;
+}
+
+.contenedor {
+    padding: 150px;
+    background-color: #00f;
+    position: relative;
+}
+
+ h2 {
+    font-size: 18px;
+    margin: 0;
+ }
+
+ p {
+    font-size: 14px;
+    margin: 0;
+ }
+
+ .box-fixed {
+    height: 60px;
+    width: 200px;
+    background-color: #f00;
+    position: sticky;
+    top: 20px;
+ }
