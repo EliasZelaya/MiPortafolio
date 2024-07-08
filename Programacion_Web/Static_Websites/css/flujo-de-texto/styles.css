@@ -1,0 +1,21 @@
+body {
+    margin: 0;
+    font-family: sans-serif;
+    background-color: #ccc;
+}
+
+.box {
+    width: 250px;
+    height: 50px;
+    margin: auto;
+    margin-top: 50px;
+    background-color: #fff;
+    border: 1px solid #0006;
+    white-space: normal;
+    text-overflow: ellipsis;
+    word-break: break-all;
+}
+
+h1 {
+    text-wrap: pretty;
+}
