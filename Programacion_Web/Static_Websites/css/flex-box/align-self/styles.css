@@ -32,5 +32,5 @@ div, body {
 }
 
 .flex-item:last-child {
-    /*background-color: #000;*/
+    background-color: #000;
 }
