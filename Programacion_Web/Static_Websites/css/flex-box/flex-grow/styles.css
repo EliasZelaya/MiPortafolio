@@ -1,0 +1,40 @@
+body {
+    margin: 0;
+    font-family: sans-serif;
+}
+
+div, body {
+    box-sizing: border-box;
+}
+
+.flexbox {
+    display: flex;
+    flex-flow: row wrap;
+    border: 2px solid #000;
+    margin: 20px;
+    height: 100px;
+    justify-content: center;
+    align-items: center;
+}
+
+.flex-item {
+    width: 100px;
+    height: 50px;
+    font-size: 40px;
+    text-align: center;
+    background-color: #800;
+    margin: 10px;
+    color: #fff;
+    direction: rtl;
+    flex-grow: 1;
+}
+
+.flex-item:first-child {
+    background-color: #f77;
+    flex-grow: 2;
+}
+
+.flex-item:last-child {
+    background-color: #000;
+    flex-grow: 5;
+}
