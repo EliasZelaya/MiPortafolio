@@ -1,0 +1,92 @@
+.box {
+    box-sizing: border-box;
+    font-family: 'Courier New', 'Courier', sans-serif;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 400px;
+    height: 400px;
+    /*Se le resta al margin porque el elemento se a movido con el top y left, por lo que el elemnto no esta centrado, por lo tanto se le resta la mitad del tamanio del elemento para centrarlo*/
+    margin-top: -200px;
+    margin-left: -200px;
+    background: linear-gradient(to top right, #43399f 0%, #4ec6ca 100%);
+    color: #fff;
+}
+
+.center {
+    position: absolute;
+    top: 50.8%;
+    left: 50.5%;
+    transform: translate(-50%,-50%);
+}
+
+.number {
+    position: relative;
+    width: 200px;
+    height: 100px;
+}
+
+.one-1 {
+    position: absolute;
+    z-index: 30;
+    left: 10%;
+    top: 10%;
+    height: 80px;
+    width: 20px;
+    background-color: #fff;
+    border-radius: 4px;
+    box-shadow: 0 0 13px 0 #0002;
+}
+
+.one-2 {
+    position: absolute;
+    z-index: 20;
+    top: 9px;
+    left: 6px;
+    background-color: #fff;
+    height: 40px;
+    width: 20px;
+    border-radius: 4px;
+    transform: rotate(50deg);
+    box-shadow: 0 0 13px 0 #0002;
+}
+
+.zero-1, .zero-2 {
+    position: absolute;
+    width: 80px;
+    height: 80px;
+    border: 20px solid #fff;
+    border-radius: 50%;
+    box-sizing: border-box;
+    box-shadow: 0 0 13px 0 #0002;
+}
+
+.zero-1 {
+    z-index: 10;
+    top: 10px;
+    left: 32px;
+}
+
+.zero-2 {
+    top: 10px;
+    left: 100px;
+}
+
+.big {
+    position: relative;
+    top: -20px;
+    text-align: center;
+    font-size: 70px;
+    /*Para trasformar el texto a mayusculas*/
+    text-transform: uppercase;
+    font-weight: 600;
+}
+
+.small {
+    position: relative;
+    bottom: 38px;
+    font-size: 20px;
+    font-weight: 600;
+    text-align: center;
+    text-transform: uppercase;   
+}
