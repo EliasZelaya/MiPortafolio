@@ -66,7 +66,6 @@ h1 {
 }
 
 .user-name {
-    display: inline-block;
     position: relative;
     bottom: 10px;
     font-weight: 700;
