@@ -16,8 +16,10 @@ body {
     display: flex;
     flex-direction: column;
     align-content: center;
-    text-wrap:pretty ;
-    padding: 4%;
+    flex-wrap: nowrap;
+    text-wrap: pretty;
+    padding: 25px;
+    max-width: 280px;
 }
 
 .published-text {
