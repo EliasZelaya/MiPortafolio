@@ -9,15 +9,15 @@ body {
 /*HEADER SECTION*/
 
 .header {   
-    height: 100vh;
+    min-height: 100vh;
     box-sizing: border-box;
     background-image: url("../../../assets/hollow.webp");
-    background-size: cover;
+    background-size:cover ;
     display: flex;
 }
 
 .header__overlay {
-    height: 100vh;  
+    min-height: 100vh;  
     width: 100%;
     background-color: #0006;
     position: absolute;
@@ -30,23 +30,23 @@ body {
     z-index: 10;
     margin: auto;
     text-align: center;
-    max-width: 700px;
+    width: 70%;
 }
 
 .header__item-container p {
+    text-align: left;
     text-wrap: pretty;
 }
 
 .header__img {
-    min-width: 250px;
-    max-width: 60%;
     border: 2px solid #fff;
-    padding: 5%;
+    padding: 20px 0;
+    max-width: 100%;
 }
 
 h1 {
     font-size: 3.6rem;
-    text-wrap: balance;
+    text-align: center;
 }
 
 /*NAVBAR SECTION*/
@@ -54,27 +54,66 @@ h1 {
 .nav {
     background-color: #fff;
     display: flex;
-    justify-content: space-between;
-    padding: 0 40px 0 40px;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    padding: 0 60px;
+    position: sticky;
+    top: 0;
+}
+
+.nav__container {
+    flex-grow: 4;
+}
+
+.navlog__container {
+    flex-grow: 1;
 }
 
 .nav__log {
     width: 100px;
-    height: 60px;
+    min-height: 60px;
+    padding: 20px 0;
 }
 
 .nav__ul {
     margin: 0;
     display: flex;
+    flex-wrap: wrap;
+    padding: 0;
 }
 
 .nav__item {
     list-style: none;
+    margin: 4px;
 }
 
 .nav__link {
     color: #003d;
     text-decoration: none;
-    display: inline-block;
-    padding: 10px;
+    display: flex;
+    padding: 10px 14px;
+    font-size: 20px;
+    transition: border-radius 0.2s, background-color 0.2s, outline 0.18s, outline-offset 0.18s;
+    margin: 2px;
+}
+
+.nav__link:hover {
+    background-color: #00a6;
+    border-radius: 20px;
+    outline: 2px solid;
+    outline-offset: -6px;
+}
+
+.link--login {
+    color: #ddd;
+    background-color: #008f;
+    border-radius: 20px;
+    transition: background-color 0.3s;
+    padding: 10px 24px;
+}
+
+.link--login:hover {
+    background-color: #00a6;
+    outline: 0
 }
