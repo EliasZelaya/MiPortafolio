@@ -1,0 +1,39 @@
+body {
+    margin: 0;
+    font-family: sans-serif;
+    display: grid;
+    grid-template-areas: 
+    "header header header"
+    "nav main aside"
+    "footer footer footer";
+    min-height: 100vh;
+    grid-template-columns: repeat(3, minmax(150px, 1fr));
+    grid-template-rows: auto 1fr auto;
+    gap: 10px;
+    padding: 10px;
+}
+
+nav, header, main, aside, footer {
+    padding: 20px;
+    border: 2px solid #000;
+}
+
+header {
+    grid-area: header;
+}
+
+nav {
+    grid-area: nav;
+}
+
+main {
+    grid-area: main;
+}
+
+aside {
+    grid-area: aside;
+}
+
+footer {
+    grid-area: footer;
+}
