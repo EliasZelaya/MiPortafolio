@@ -8,8 +8,8 @@ import androidx.compose.material3.Icon
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextField
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
-import androidx.compose.runtime.livedata.observeAsState
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.focus.FocusDirection
 import androidx.compose.ui.platform.LocalFocusManager
@@ -21,14 +21,17 @@ fun UsernameField(
     modifier: Modifier,
     viewmodel: LoginScreenViewModel
 ) {
-    val username by viewmodel.username.observeAsState("")
+    /*val username by viewmodel.username.observeAsState("")
     val password by viewmodel.password.observeAsState("")
+    */
     val focusManager = LocalFocusManager.current
+
+    val username by viewmodel.username.collectAsState()
 
     TextField(
         value = username,
         onValueChange = {
-            viewmodel.onLoginField(it, password)
+            viewmodel.onNameField(it)
         },
         maxLines = 1,
         singleLine = true,

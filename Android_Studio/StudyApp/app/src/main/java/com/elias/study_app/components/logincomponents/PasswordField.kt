@@ -9,6 +9,7 @@ import androidx.compose.material3.Icon
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextField
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.livedata.observeAsState
 import androidx.compose.ui.Modifier
@@ -22,8 +23,9 @@ fun PasswordField(
     modifier: Modifier,
     viewmodel: LoginScreenViewModel
 ) {
-    val username by viewmodel.username.observeAsState("")
-    val password by viewmodel.password.observeAsState("")
+    /*val username by viewmodel.username.observeAsState("")
+    val password by viewmodel.password.observeAsState("")*/
+    val password by viewmodel.password.collectAsState()
     val checkVisibility by viewmodel.checkVisibility.observeAsState(false)
     val Icon by viewmodel.visibility.observeAsState(Icons.Default.VisibilityOff)
     val visualTransformation by viewmodel.passwordKey.observeAsState(PasswordVisualTransformation())
@@ -31,7 +33,7 @@ fun PasswordField(
     TextField(
         value = password,
         onValueChange = {
-            viewmodel.onLoginField(username, it)
+            viewmodel.onPassField(it)
         },
         label = { Text(text = "Password") },
         placeholder = { Text(text = "Write your password") },
